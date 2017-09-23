@@ -1080,7 +1080,7 @@ formatExpression elmVersion context aexpr =
                 spacer first _ =
                     case first of
                         AST.Expression.LetDefinition _ _ _ _ ->
-                            [ blankLine ]
+                            [] -- todo: Prepend with blankLine for LetDeclaration only
                         _ ->
                             []
 
