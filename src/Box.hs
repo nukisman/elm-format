@@ -1,10 +1,11 @@
 {-# OPTIONS_GHC -Wall #-}
 module Box
   ( Line, identifier, keyword, punc, literal, row, space
-  , Box(SingleLine, MustBreak), blankLine, line, mustBreak, stack', stack1, andThen
+  , Box(SingleLine, MustBreak, Stack), blankLine, line, mustBreak, stack', stack1, andThen
   , isLine, allSingles, lineLength
   , indent, prefix, addSuffix
   , render
+  , destructure
   ) where
 
 import Elm.Utils ((|>))
@@ -25,6 +26,7 @@ data Line
     | Row [Line]
     | Space
     | Tab
+--    deriving (Show)
 
 
 identifier :: String -> Line
