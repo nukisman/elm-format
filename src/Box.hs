@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 module Box
-  ( Line, identifier, keyword, punc, literal, row, space
+  ( Line, identifier, keyword, punc, literal, row, space, tab
   , Box(SingleLine, MustBreak, Stack), blankLine, line, mustBreak, stack', stack1, andThen
   , isLine, allSingles, lineLength
   , indent, prefix, addSuffix
@@ -59,6 +59,9 @@ space :: Line
 space =
     Space
 
+tab :: Line
+tab =
+    Tab
 
 {-
 Box contains Lines (at least one - can't be empty).

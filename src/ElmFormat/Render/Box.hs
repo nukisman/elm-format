@@ -1145,7 +1145,13 @@ formatExpression elmVersion context aexpr =
                                                 (a:[]) ->
                                                     stack1 [ first, SingleLine a]
                                                 (a:b:rest) ->
-                                                    stack1 [first, Stack a b rest]
+                                                    stack1
+                                                        [ first
+                                                        , Stack
+                                                            (row [tab, a])
+                                                            (row [tab, b])
+                                                            (map (\l -> row [tab, l]) rest)
+                                                        ]
 
                                         newTail :: [Box]
                                         newTail = tailBoxes |> map indent
