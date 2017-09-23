@@ -337,7 +337,7 @@ formatModule elmVersion modu =
       stack1 $
         initialComments'
           ++ (formatModuleHeader elmVersion modu)
-          : maybeToList (formatModuleBody 2 elmVersion modu)
+          : maybeToList (formatModuleBody 1 elmVersion modu)
 
 
 formatModuleBody :: Int -> ElmVersion -> AST.Module.Module -> Maybe Box
@@ -352,7 +352,7 @@ formatModuleBody linesBetween elmVersion modu =
             (DComment, DComment) ->
               []
             (_, DComment) ->
-              List.replicate (linesBetween + 1) blankLine
+              List.replicate linesBetween blankLine
             (DComment, _) ->
               List.replicate linesBetween blankLine
             (DDocComment, DDefinition _) ->
