@@ -6,3 +6,5 @@
 /.stack-work/
 /tests/elm-format
 .idea
+debug.txt
+debug.elm
