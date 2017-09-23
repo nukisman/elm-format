@@ -1211,7 +1211,6 @@ formatExpression elmVersion context aexpr =
                     |> andThen
                         (clauses
                             |> map clause
-                            |> List.intersperse blankLine
                             |> map indent
                         )
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
