@@ -1104,8 +1104,10 @@ formatExpression elmVersion context aexpr =
                     |> andThen
                         [ line $ keyword "in"
                         , stack1 $
-                            (map formatComment bodyComments)
-                            ++ [formatExpression elmVersion SyntaxSeparated expr]
+                            ((map formatComment bodyComments)
+                                ++ [formatExpression elmVersion SyntaxSeparated expr]
+                                |> map indent
+                            )
                         ]
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
