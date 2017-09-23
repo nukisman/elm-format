@@ -794,7 +794,7 @@ formatDefinition elmVersion name args comments expr =
         , [ formatExpression elmVersion SyntaxSeparated expr ]
         ]
   in
-    ElmStructure.definition "=" True
+    ElmStructure.definition "=" False
       (formatPattern elmVersion True name)
       (map (\(x,y) -> formatCommented' x (formatPattern elmVersion True) y) args)
       body
