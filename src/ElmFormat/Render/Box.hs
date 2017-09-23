@@ -1080,7 +1080,7 @@ formatExpression elmVersion context aexpr =
                 spacer first _ =
                     case first of
                         AST.Expression.LetDefinition _ _ _ _ ->
-                            [ blankLine ]
+                            [] -- todo: Prepend with blankLine for LetDeclaration only
                         _ ->
                             []
 
@@ -1094,21 +1094,57 @@ formatExpression elmVersion context aexpr =
 
                     AST.Expression.LetComment comment ->
                         formatComment comment
+
+                letBlock :: Box
+                letBlock =
+                    let letKey :: Line
+                        letKey = keyword "let"
+
+                        letDefs :: [Box]
+                        letDefs = defs |> intersperseMap spacer formatDefinition'
+
+                        letDefsNew :: [Box]
+                        letDefsNew =
+                            case letDefs of
+                                (headBox:tailBoxes) ->
+                                    let -- (Line, [Line])
+                                        (l, ls) = destructure headBox
+
+                                        newHead :: Box -- One space
+                                        newHead = SingleLine $ row $ [letKey, space, l] ++ ls
+
+                                        newTail :: [Box]
+                                        newTail = tailBoxes |> map indent
+                                    in (newHead:newTail)
+                                _ -> [] -- let SyntaxError
+                    in  stack1 letDefsNew
+
+                inBlock :: Box
+                inBlock =
+                    let inKey :: Line
+                        inKey = keyword "in"
+
+                        inDefs :: [Box]
+                        inDefs = (map formatComment bodyComments)
+                             ++ [formatExpression elmVersion SyntaxSeparated expr]
+
+                        inDefsNew :: [Box]
+                        inDefsNew =
+                            case inDefs of
+                                (headBox:tailBoxes) ->
+                                    let -- (Line, [Line])
+                                        (l, ls) = destructure headBox
+
+                                        newHead :: Box -- Two spaces
+                                        newHead = SingleLine $ row $ [inKey, space, space, l] ++ ls
+
+                                        newTail :: [Box]
+                                        newTail = tailBoxes |> map indent
+                                    in (newHead:newTail)
+                                _ -> [] -- in SyntaxError
+                    in  stack1 inDefsNew
             in
-                (line $ keyword "let")
-                    |> andThen
-                        (defs
-                            |> intersperseMap spacer formatDefinition'
-                            |> map indent
-                        )
-                    |> andThen
-                        [ line $ keyword "in"
-                        , stack1 $
-                            ((map formatComment bodyComments)
-                                ++ [formatExpression elmVersion SyntaxSeparated expr]
-                                |> map indent
-                            )
-                        ]
+                stack1 [letBlock, inBlock]
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
         AST.Expression.Case (subject,multiline) clauses ->
