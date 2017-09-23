@@ -195,7 +195,7 @@ formatModuleHeader elmVersion modu =
       moduleLine
           |> mapIf (\x -> andThen [ blankLine, x ]) docs
           |> (if null imports then id else andThen imports . andThen [blankLine])
-          |> andThen [ blankLine, blankLine ]
+          |> andThen [ blankLine ]
 
 
 formatImports :: ElmVersion -> AST.Module.Module -> [Box]
