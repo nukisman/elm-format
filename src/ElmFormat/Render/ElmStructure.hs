@@ -336,6 +336,6 @@ extensionGroup' multiline base fields =
     _ ->
       stack1
         [ prefix (row [punc "{", space]) base
-        , indent fields
+        , fields
         , line $ punc "}"
         ]
