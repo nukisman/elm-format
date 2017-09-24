@@ -1214,11 +1214,7 @@ formatExpression elmVersion context aexpr =
                               ]
             in
                 opening
-                    |> andThen
-                        (clauses
-                            |> map clause
-                            |> map indent
-                        )
+                    |> andThen (clauses |> map clause )
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
         AST.Expression.Tuple exprs multiline ->
