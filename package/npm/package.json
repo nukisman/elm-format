@@ -1,6 +1,6 @@
 {
   "name": "elm-format-short",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Install elm-format-short",
   "preferGlobal": true,
   "main": "index.js",
