@@ -15,7 +15,7 @@ myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -
 myBuildHook packageDescription buildInfo userHooks buildFlags =
     do
         createDirectoryIfMissing True (autogenModulesDir buildInfo)
-        writeCustomFile (autogenModulesDir buildInfo </> "Build_elm_format.hs")
+        writeCustomFile (autogenModulesDir buildInfo </> "Build_elm_format_short.hs")
         buildHook simpleUserHooks packageDescription buildInfo userHooks buildFlags
 
 
@@ -27,7 +27,7 @@ writeCustomFile filepath = do
   now <- readProcess "date" ["+%s"] ""
 
   writeFile filepath $ unlines
-      [ "module Build_elm_format where"
+      [ "module Build_elm_format_short where"
       , ""
       , "gitDescribe :: String"
       , "gitDescribe = " ++ show (init desc)

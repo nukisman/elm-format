@@ -22,7 +22,7 @@ RUN mkdir -p /root/.local/bin && \
 COPY stack.yaml ./
 RUN stack setup
 
-COPY elm-format.cabal ./
+COPY elm-format-short.cabal ./
 RUN stack build --only-snapshot
 RUN stack build --only-dependencies
 RUN stack build --test --only-dependencies

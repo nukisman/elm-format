@@ -1,6 +1,6 @@
-elm-format-0.18 x.x.x
+elm-format-short-0.18 x.x.x
 
-Usage: elm-format [INPUT] [--output FILE] [--yes] [--validate] [--stdin]
+Usage: elm-format-short [INPUT] [--output FILE] [--yes] [--validate] [--stdin]
                   [--elm-version VERSION] [--upgrade]
   Format Elm source files.
 
@@ -16,8 +16,8 @@ Available options:
   --upgrade                Upgrade older Elm files to Elm 0.18 syntax
 
 Examples:
-  elm-format Main.elm                     # formats Main.elm
-  elm-format Main.elm --output Main2.elm  # formats Main.elm as Main2.elm
-  elm-format src/                         # format all *.elm files in the src directory
+  elm-format-short Main.elm                     # formats Main.elm
+  elm-format-short Main.elm --output Main2.elm  # formats Main.elm as Main2.elm
+  elm-format-short src/                         # format all *.elm files in the src directory
 
-Full guide to using elm-format at <https://github.com/avh4/elm-format>
+Full guide to using elm-format-short at <https://github.com/nukisman/elm-format-short>

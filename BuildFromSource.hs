@@ -52,7 +52,7 @@ configs =
   Map.fromList
     [
       "build" =:
-        [ "elm-compiler" =: ("avh4", "elm-format")
+        [ "elm-compiler" =: ("nukisman", "elm-format-short")
         ]
     ]
 

@@ -24,19 +24,19 @@ choco install poshgit
 ## Build Windows binary
 
 ```bash
-cd package/win/elm-format
+cd package/win/elm-format-short
 git fetch
 git checkout <version tag>
 
-## !! Make sure you are in package/win/elm-format !!
+## !! Make sure you are in package/win/elm-format-short !!
 git clean -dfx
-## !! Make sure you are in package/win/elm-format !!
+## !! Make sure you are in package/win/elm-format-short !!
 ```
 
  - Start Git Bash
 
 ```bash
-cd /c/vagrant/elm-format
+cd /c/vagrant/elm-format-short
 /c/vagrant/build-package.sh
 ```
 
@@ -44,4 +44,4 @@ cd /c/vagrant/elm-format
 # cd ./package/win/
 # vagrant halt
 
-# on mac:  zip elm-format-0.1-alpha-2-win-x64.zip elm-format.exe
+# on mac:  zip elm-format-short-0.1-alpha-2-win-x64.zip elm-format-short.exe

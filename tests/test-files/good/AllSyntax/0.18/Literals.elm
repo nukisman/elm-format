@@ -56,7 +56,7 @@ stringWithEscapedControlCharacters =
 
 
 stringWithWindowsWorkaroundCharacters =
-    -- See https://github.com/avh4/elm-format/issues/134
+    -- See https://github.com/nukisman/elm-format-short/issues/134
     " "
 
 

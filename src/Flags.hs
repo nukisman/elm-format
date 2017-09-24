@@ -100,13 +100,13 @@ helpInfo defaultElmVersion elmFormatVersion experimental =
   where
     top =
         PP.vcat $ concat
-            [ [ PP.text $ "elm-format-" ++ show defaultElmVersion ++ " " ++ elmFormatVersion ]
+            [ [ PP.text $ "elm-format-short" ++ show defaultElmVersion ++ " " ++ elmFormatVersion ]
             , case experimental of
                   Just surveyUrl ->
                       [ (PP.<$>) (PP.text "") $
                         PP.indent 4 $ PP.bold $
                         PP.fillSep $ map PP.text $ words $
-                          "This version of elm-format contains features " ++
+                          "This version of elm-format-short contains features " ++
                           "that may or may not appear in future releases. " ++
                           "You can provide feedback about experimental features " ++
                           "at " ++ surveyUrl
@@ -118,11 +118,11 @@ helpInfo defaultElmVersion elmFormatVersion experimental =
     examples =
         linesToDoc
         [ "Examples:"
-        , "  elm-format Main.elm                     # formats Main.elm"
-        , "  elm-format Main.elm --output Main2.elm  # formats Main.elm as Main2.elm"
-        , "  elm-format src/                         # format all *.elm files in the src directory"
+        , "  elm-format-short Main.elm                     # formats Main.elm"
+        , "  elm-format-short Main.elm --output Main2.elm  # formats Main.elm as Main2.elm"
+        , "  elm-format-short src/                         # format all *.elm files in the src directory"
         , ""
-        , "Full guide to using elm-format at <https://github.com/avh4/elm-format>"
+        , "Full guide to using elm-format-short at <https://github.com/nukisman/elm-format-short>"
         ]
 
 

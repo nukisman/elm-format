@@ -3,14 +3,14 @@ image_resource:
   type: docker-image
   source: {repository: haskell, tag: "7.10.3"}
 inputs:
-- name: elm-format
+- name: elm-format-short
 run:
   path: sh
   args:
   - -exc
   - |
     apt-get update && apt-get install shellcheck
-    cd elm-format
+    cd elm-format-short
     cabal update
     cabal install --only-dependencies --enable-tests
     cabal configure --enable-tests

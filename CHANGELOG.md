@@ -1,3 +1,7 @@
+## 0.7.2
+
+Fork `elm-format-short` from `elm-format`
+
 ## master (0.7.1-beta)
 
 Features promoted from 0.7.0-exp:

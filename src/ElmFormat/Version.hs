@@ -1,11 +1,11 @@
 module ElmFormat.Version (asString, experimental) where
 
-import qualified Build_elm_format
+import qualified Build_elm_format_short
 
 
 asString :: String
 asString =
-    Build_elm_format.gitDescribe
+    Build_elm_format_short.gitDescribe
 
 
 experimental :: Maybe String

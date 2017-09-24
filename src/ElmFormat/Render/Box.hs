@@ -32,7 +32,7 @@ import Util.List
 
 pleaseReport' :: String -> String -> Line
 pleaseReport' what details =
-    keyword $ "<elm-format-" ++ ElmFormat.Version.asString ++ ": "++ what ++ ": " ++ details ++ " -- please report this at https://github.com/avh4/elm-format/issues >"
+    keyword $ "<elm-format-short-" ++ ElmFormat.Version.asString ++ ": "++ what ++ ": " ++ details ++ " -- please report this at https://github.com/nukisman/elm-format-short/issues >"
 
 
 pleaseReport :: String -> String -> Box

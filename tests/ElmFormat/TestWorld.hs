@@ -52,7 +52,7 @@ instance World (State.State TestWorldState) where
             State.put $ state { stdout = string : stdout state }
 
     getProgName =
-        return "elm-format"
+        return "elm-format-short"
 
 
 testWorld :: [(String, String)] -> TestWorldState

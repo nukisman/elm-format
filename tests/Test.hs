@@ -20,7 +20,7 @@ main :: IO ()
 main =
     do
         markdownTests <- CommonMarkTests.construct
-        defaultMain $ testGroup "elm-format" $
+        defaultMain $ testGroup "elm-format-short" $
             [ Test.Property.propertyTests
             , BoxTest.tests
             , ElmFormat.Render.ElmStructureTest.tests

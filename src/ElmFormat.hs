@@ -31,7 +31,7 @@ import qualified Reporting.Error.Syntax as Syntax
 import qualified Reporting.Result as Result
 
 
--- If elm-format was successful and formatted result differ
+-- If elm-format-short was successful and formatted result differ
 -- from original content, writes the results to the output file.
 -- Otherwise, display errors and exit
 writeResult

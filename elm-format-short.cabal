@@ -1,11 +1,10 @@
-Name: elm-format
-version: 0.7.0-exp
+Name: elm-format-short
+version: 0.7.2
 
 Synopsis:
-    A source code formatter for Elm
+    A source code short formatter for Elm
 Description:
-    A simple way to format your Elm code according to the official
-    style guide.
+    A simple way to short format your Elm code without tons of extra blank lines and line breaks.
 
 Homepage:
     http://elm-lang.org
@@ -13,9 +12,9 @@ Homepage:
 License: BSD3
 License-file: LICENSE
 
-Author:     Aaron VonderHaar
-Maintainer: gruen0aermel@gmail.com
-Copyright:  See https://github.com/avh4/elm-format/blob/master/LICENSE
+Author:     Alexander Nuikin
+Maintainer: nukisman@gmail.com
+Copyright:  See https://github.com/nukisman/elm-format-short/blob/master/LICENSE
 
 Category: Build Tool
 
@@ -26,7 +25,7 @@ Extra-source-files: README.md
 
 source-repository head
     type:     git
-    location: git://github.com/avh4/elm-format.git
+    location: git://github.com/nukisman/elm-format-short.git
 
 
 custom-setup
@@ -80,7 +79,7 @@ library
         Util.List
 
     other-modules:
-        Build_elm_format
+        Build_elm_format_short
         Cheapskate.Inlines
         Cheapskate.Parse
         Cheapskate.ParserCombinators
@@ -98,7 +97,7 @@ library
         Messages.Formatter.Json
         Messages.Strings
         Messages.Types
-        Paths_elm_format
+        Paths_elm_format_short
         Parse.Binop
         Parse.Common
         Parse.Comments
@@ -131,7 +130,7 @@ library
         text >= 1.2.2.1 && < 2
 
 
-executable elm-format-0.18
+executable elm-format-short-0.18
 
     ghc-options:
         -threaded -O2 -Wall -Wno-name-shadowing
@@ -144,10 +143,10 @@ executable elm-format-0.18
 
     build-depends:
         base >= 4.9.0.0 && < 5,
-        elm-format
+        elm-format-short
 
 
-executable elm-format-0.17
+executable elm-format-short-0.17
 
     ghc-options:
         -threaded -O2 -Wall -Wno-name-shadowing
@@ -160,10 +159,10 @@ executable elm-format-0.17
 
     build-depends:
         base >= 4.9.0.0 && < 5,
-        elm-format
+        elm-format-short
 
 
-test-Suite elm-format-tests
+test-Suite elm-format-short-tests
     type:
         exitcode-stdio-1.0
 
@@ -209,4 +208,4 @@ test-Suite elm-format-tests
         parsec >= 3.1.11 && < 4,
         split >= 0.2.3.1 && < 0.3,
         text >= 1.2.2.1 && < 2,
-        elm-format
+        elm-format-short

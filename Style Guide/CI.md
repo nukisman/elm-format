@@ -1,13 +1,13 @@
 # Continous Integration
 
 You can ensure that changes to your project are properly formatted
-by using `elm-format` in your contiunous integration builds.
+by using `elm-format-short` in your contiunous integration builds.
 
 ```sh
-elm-format --validate .
+elm-format-short --validate .
 ```
 
-The `--validate` option causes `elm-format` to do the following:
+The `--validate` option causes `elm-format-short` to do the following:
 
   - No files will be changed on disk
   - There will be no interactive prompts
@@ -15,13 +15,13 @@ The `--validate` option causes `elm-format` to do the following:
     If one or more specified files are not properly formatted, it will exit with exit code 1.
   - The output will be a JSON list of errors (or an empty list if all Elm files are properly formatted)
 
-The `.` argument tells `elm-format` to search the current directory recursively for Elm files.
+The `.` argument tells `elm-format-short` to search the current directory recursively for Elm files.
 This will find all `*.elm` files, ignoring any directories named `elm-stuff` or `node_modules`.
 
 ## JSON format
 
 
-### `elm-format --validate` output
+### `elm-format-short --validate` output
 
 The output will be a `List` of [FormattingErrors](#FormattingError).
 
@@ -38,7 +38,7 @@ A FormattingError will be an object with the following fields:
 ### Example JSON
 
 ```json
-[{"path":"./src/Fifo.elm","message":"File is not formatted with elm-format-0.6.1-alpha --elm-version=0.18"}
-,{"path":"./tests/Tests.elm","message":"File is not formatted with elm-format-0.6.1-alpha --elm-version=0.18"}
+[{"path":"./src/Fifo.elm","message":"File is not formatted with elm-format-short-0.7.2 --elm-version=0.18"}
+,{"path":"./tests/Tests.elm","message":"File is not formatted with elm-format-short-0.7.2 --elm-version=0.18"}
 ]
 ```

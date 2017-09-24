@@ -1,6 +1,6 @@
 module AllSyntax.WindowsEol exposing (..)
 
-{-| elm-format converts all CRLF line-endings to LF.
+{-| elm-format-short converts all CRLF line-endings to LF.
 
 Raw CRs that are within strings will be escaped.
 
@@ -17,7 +17,8 @@ string = "
 "
 
 
-rawCR = ""
+rawCR = "
+"
 
 
 escapedCR = "\x0D"

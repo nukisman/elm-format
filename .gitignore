@@ -3,8 +3,8 @@
 /_input2.elm
 /_stdout.txt
 *.tix
-/.stack-work/
-/tests/elm-format
+/.stack-work
+/tests/elm-format-short
 .idea
 debug.txt
 debug.elm

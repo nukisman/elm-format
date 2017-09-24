@@ -1,5 +1,5 @@
 platform: windows
 inputs:
-- name: elm-format
+- name: elm-format-short
 run:
-  path: elm-format/ci/win.bat
+  path: elm-format-short/ci/win.bat

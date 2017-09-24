@@ -33,7 +33,7 @@ showInfo _ (ProcessingFiles _) next =
 
 showInfo elmVersion (FileWouldChange file) next =
     json next file $
-        "File is not formatted with elm-format-" ++ ElmFormat.Version.asString
+        "File is not formatted with elm-format-short-" ++ ElmFormat.Version.asString
         ++ " --elm-version=" ++ show elmVersion
 
 showInfo _ (ParseError inputFile _ _) next =

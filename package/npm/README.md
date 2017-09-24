@@ -1,2 +1,2 @@
 
-See [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)
+See [https://github.com/nukisman/elm-format-short](https://github.com/nukisman/elm-format-short)

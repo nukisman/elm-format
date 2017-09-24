@@ -1,14 +1,20 @@
 # Introduction
 
-`elm-format` formats [Elm](http://elm-lang.org) source code according to a standard set of rules. It is inspired by the popular [gofmt](https://blog.golang.org/go-fmt-your-code).
+`elm-format-short` formats your code like `elm-format` but: 
+    * Without extra blank lines
+    * Without extra line breaks
+    * Without extra indents
 
-The benefits of `elm-format`:
+The benefits of `elm-format-short` are same as of `elm-format`:
  - It makes code **easier to write**, because you never have to worry about minor formatting concerns while powering out new code.
  - It makes code **easier to read**, because there are no longer distracting minor stylistic differences between different code bases. As such, your brain can map more efficiently from source to mental model.
  - It makes code **easier to maintain**, because you can no longer have diffs related only to formatting; every diff necessarily involves a material change.
  - It **saves your team time** debating how to format things, because there is a standard tool that formats everything the same way.
  - It **saves you time** because you don't have to nitpick over formatting details of your code.
-
+plus
+ - It makes code **easier to read**, because your can see more code without scrolling
+ - It makes code **easier to write**, because it is **easier to read**
+ - It **saves your money**, because you can still use your display. You need not to buy new display with 100500 pixels height resolution to render beautiful blank lines and other spaces. :-) 
 
 ## Constraints
 

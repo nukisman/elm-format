@@ -1,7 +1,7 @@
 {
-  "name": "elm-format",
-  "version": "0.7.0-exp",
-  "description": "Install elm-format",
+  "name": "elm-format-short",
+  "version": "0.7.2",
+  "description": "Install elm-format-short",
   "preferGlobal": true,
   "main": "index.js",
   "scripts": {
@@ -11,23 +11,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avh4/elm-format.git"
+    "url": "git+https://github.com/avh4/elm-format-short.git"
   },
   "keywords": [
-    "elm-format"
+    "elm-format",
+    "elm-format-short"
   ],
   "author": "Aaron VonderHaar",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/avh4/elm-format/issues"
+    "url": "https://github.com/nukisman/elm-format-short/issues"
   },
   "files": [
     "index.js",
     "bin"
   ],
-  "homepage": "https://github.com/avh4/elm-format",
+  "homepage": "https://github.com/nukisman/elm-format-short",
   "bin": {
-    "elm-format": "bin/elm-format"
+    "elm-format-short": "bin/elm-format-short"
   },
   "dependencies": {
     "binwrap": "^0.1.4"
