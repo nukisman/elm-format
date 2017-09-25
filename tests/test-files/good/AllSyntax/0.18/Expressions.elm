@@ -274,10 +274,22 @@ letStatement =
     in  ( x, y )
 
 caseStatement =
-    let a =
+    let aLongName =
             case Just 1 of
             Just x ->
                 x
+            _ ->
+                2
+        wLongName =
+            case Just 1 of
+            _ ->
+                2
+        aa =
+            case Just 1 of
+            Just x ->
+                x
+            Just 123 ->
+                456
             _ ->
                 2
         b =
@@ -312,4 +324,10 @@ caseStatement =
             ->
                 --T
                 2
-    in  {}
+    in  let aLongName =
+                case Just 1 of
+                Just x ->
+                    x
+                _ ->
+                    2
+        in  {}

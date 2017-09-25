@@ -1117,7 +1117,17 @@ formatExpression elmVersion context aexpr =
                                         (l, ls) = destructure headBox
 
                                         newHead :: Box -- One space
-                                        newHead = SingleLine $ row $ [letKey, space, l] ++ ls
+                                        newHead =
+                                            case (l, ls) of
+                                                (l, []) ->
+                                                    line $ row [letKey, space, l]
+                                                (l, (h:rest)) ->
+                                                    stack1
+                                                        ( [ line $ row [letKey, space, l] ]
+                                                          ++ ( (line h : map line rest)
+                                                               |> map indent
+                                                             )
+                                                        )
 
                                         newTail :: [Box]
                                         newTail = tailBoxes |> map indent
