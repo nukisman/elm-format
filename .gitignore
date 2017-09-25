@@ -8,3 +8,6 @@
 .idea
 debug.txt
 debug.elm
+dist
+elm-format-short-*.tgz
+.vagrant

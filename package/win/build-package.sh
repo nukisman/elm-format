@@ -9,7 +9,7 @@ BINEXT=".exe"
 ## Run tests
 
 stack clean
-./tests/run-tests.sh
+#./tests/run-tests.sh # TODO !!!
 
 
 ## Build binaries

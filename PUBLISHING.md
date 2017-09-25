@@ -7,11 +7,12 @@
 
 ```bash
 brew update
-brew install keybase
+brew tap caskroom/cask
+brew cask install keybase
 brew install github-release
-brew install caskroom/cask/brew-cask
 brew cask install vagrant
 brew cask install virtualbox
+brew install gpg
 ```
 
 
@@ -58,6 +59,7 @@ brew cask install virtualbox
 
 ```
 cd package/npm
+npm i
 # for experimental releases
 # npm publish --tag exp
 npm publish

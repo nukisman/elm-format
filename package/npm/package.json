@@ -1,23 +1,23 @@
 {
   "name": "elm-format-short",
-  "version": "0.8.0",
+  "version": "0.8.3",
   "description": "Install elm-format-short",
   "preferGlobal": true,
   "main": "index.js",
   "scripts": {
     "install": "binwrap-install",
-    "prepublish": "npm test",
     "test": "eslint . && binwrap-test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avh4/elm-format-short.git"
+    "url": "git+https://github.com/nukisman/elm-format-short.git"
   },
   "keywords": [
+    "elm",
     "elm-format",
     "elm-format-short"
   ],
-  "author": "Aaron VonderHaar",
+  "author": "Alexander Nuikin",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/nukisman/elm-format-short/issues"

@@ -1,5 +1,5 @@
 ```bash
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew cask install vagrant
 brew cask install virtualbox
 #vagrant init opentable/win-2012r2-standard-amd64-nocm
@@ -10,13 +10,19 @@ vagrant winrm -c "dir"
 
 # Open VirtualBox and show the Windows VM
 
-# Download and install Haskell Stack (32-bit)
+## Download and install Haskell Stack (32-bit)
 
+## Install https://chocolatey.org/install
+
+## Open Windows command line (PowerShell)
+
+```powershell
 stack setup
 choco install devbox-common
 choco install poshgit
 #choco install sourcetree
 #choco install tortoisegit
+```
 
 # Restart shell
 
@@ -33,10 +39,10 @@ git clean -dfx
 ## !! Make sure you are in package/win/elm-format-short !!
 ```
 
- - Start Git Bash
+## Start Git Bash
 
 ```bash
-cd /c/vagrant/elm-format-short
+cd /c/vagrant
 /c/vagrant/build-package.sh
 ```
 
