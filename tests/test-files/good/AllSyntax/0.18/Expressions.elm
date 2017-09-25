@@ -231,8 +231,19 @@ lambdaWithMultilinePattern =
         ()
 
 ifStatement =
-    let a = if True then 1 else if False then 2 else 3
-        b =
+    let bLongName =
+            if True then
+                1
+            else if False then
+                2
+            else
+                3
+        aLongName =
+            if True then
+                1
+            else
+                2
+        cLongName =
             if {- C -} True {- D -} then
                 {- E -}
                 1
