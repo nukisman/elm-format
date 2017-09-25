@@ -1,19 +1,13 @@
 module AllSyntax.Literals exposing (..)
 
-
-unit =
-    ()
-
+unit = ()
 
 boolean =
     ( True
     , False
     )
 
-
-int =
-    1
-
+int = 1
 
 hexadecimalInt =
     ( 0x00
@@ -23,30 +17,21 @@ hexadecimalInt =
     , 0x0000000100000000
     )
 
-
 float =
     ( 2.0
     , 0.01
     )
-
 
 scientificNotationFloat =
     ( 1.0e-2
     , 9.11e23
     )
 
+string = "string"
 
-string =
-    "string"
+stringWithUnicodeCharacters = "a b'`<>{}/ڥ😀ぁ⾃𝟟"
 
-
-stringWithUnicodeCharacters =
-    "a b'`<>{}/ڥ😀ぁ⾃𝟟"
-
-
-stringWithSpecialEscapedCharacters =
-    "\t\n\\\""
-
+stringWithSpecialEscapedCharacters = "\t\n\\\""
 
 stringWithEscapedControlCharacters =
     ( "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x0B\x0C\x0D\x0E\x0F"
@@ -54,46 +39,27 @@ stringWithEscapedControlCharacters =
     , "\x7F"
     )
 
-
 stringWithWindowsWorkaroundCharacters =
     -- See https://github.com/nukisman/elm-format-short/issues/134
     " "
 
+stringWithEscapedNonPrintCharacters = "\x06DD\xFFFB\x110BD\xE007F"
 
-stringWithEscapedNonPrintCharacters =
-    "\x06DD\xFFFB\x110BD\xE007F"
+stringWithWhitespace = " \x2000\x205F"
 
+char = 'c'
 
-stringWithWhitespace =
-    " \x2000\x205F"
+unicodeChars = [ 'a', ' ', '/', '"', 'ڥ', '😀', 'ぁ', '⾃', '𝟟' ]
 
+escapedSpecialChars = [ '\t', '\n', '\\', '\'' ]
 
-char =
-    'c'
+escapedControlChars = [ '\x00', '\x1F', '\x7F' ]
 
+escapedNonPrintChars = [ '\x06DD', '\xFFFB', '\x110BD', '\xE007F' ]
 
-unicodeChars =
-    [ 'a', ' ', '/', '"', 'ڥ', '😀', 'ぁ', '⾃', '𝟟' ]
+whitespaceChars = [ ' ', '\x2000', '\x205F' ]
 
-
-escapedSpecialChars =
-    [ '\t', '\n', '\\', '\'' ]
-
-
-escapedControlChars =
-    [ '\x00', '\x1F', '\x7F' ]
-
-
-escapedNonPrintChars =
-    [ '\x06DD', '\xFFFB', '\x110BD', '\xE007F' ]
-
-
-whitespaceChars =
-    [ ' ', '\x2000', '\x205F' ]
-
-
-multilineString =
-    """normals = "a b'`<>{}/ڥ😀ぁ⾃𝟟"
+multilineString = """normals = "a b'`<>{}/ڥ😀ぁ⾃𝟟"
 "\t\\
 ""
 \"\"\"
@@ -104,7 +70,6 @@ multilineString =
 \x06DD\xFFFB\x110BD\xE007F
  \x2000\x205F
 """
-
 
 multilineStringQuoteHandling =
     [ """trailing double quote\""""

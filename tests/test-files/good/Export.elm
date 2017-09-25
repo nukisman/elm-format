@@ -1,6 +1,4 @@
 module Export exposing (..)
 
-
 export : String
-export =
-    "export"
+export = "export"

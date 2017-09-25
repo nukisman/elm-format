@@ -1,9 +1,6 @@
 module Main exposing (..)
 
-
-unaryOperator a =
-    -(a - 1) + -2 + -a
-
+unaryOperator a = -(a - 1) + -2 + -a
 
 multilineUnaryOperator a =
     -(if a then

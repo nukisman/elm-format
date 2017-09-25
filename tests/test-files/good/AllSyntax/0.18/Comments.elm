@@ -1,15 +1,12 @@
 module AllSyntax.Comments exposing (..)
 
-
 blockComment =
     {- A -}
     ()
 
-
 nestedBlockComment =
     {- A {- {- C -} B {- D -} -} {- E -} -}
     ()
-
 
 indentedMultilineBlockComment =
     {- A
@@ -18,15 +15,10 @@ indentedMultilineBlockComment =
     -}
     ()
 
-
 {--}
-multilineCommentTrickDisabled =
-    ()
+multilineCommentTrickDisabled = ()
 --}
 
-
-
 {--
-multilineCommentTrickEnabled =
-  ()
+multilineCommentTrickEnabled = ()
 --}

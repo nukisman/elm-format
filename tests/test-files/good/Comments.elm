@@ -19,23 +19,19 @@ import List exposing (..)
 import Signal exposing (foldp, map)
 import String
 
-
 ----------------
 --- Comments ---
 ----------------
 
-
 comments1 =
     -- comments inside declaration
     ()
-
 
 comments2 =
     1
         -- plus
         -- plus
         + 3
-
 
 records =
     { -- before a field
@@ -47,32 +43,24 @@ records =
     , f3 = ()
     }
 
-
 comments3 =
-    let
-        -- The return value
-        x =
-            ()
-
+    let -- The return value
+        x = ()
         {- comment after definitions -}
         -- ...
-    in
-    {- let body -}
-    x
-
+    in  {- let body -}
+        x
 
 comments4 bool =
     case bool of
-        -- This case is for True
-        True ->
-            -- return unit
-            ()
-
-        {- Here's a case for anything else -}
-        _ ->
-            {- return unit -}
-            ()
-
+    -- This case is for True
+    True ->
+        -- return unit
+        ()
+    {- Here's a case for anything else -}
+    _ ->
+        {- return unit -}
+        ()
 
 comments5 =
     if True then
@@ -86,26 +74,19 @@ comments5 =
         {- do the wrong thing -}
         ()
 
-
 comments6 =
     \x ->
         -- we compute using x
         x * x
 
-
 comments7 =
-    let
-        x =
+    let x =
             case True of
-                _ ->
-                    ()
-
+            _ ->
+                ()
         -- comments
-        y =
-            ()
-    in
-    ()
-
+        y = ()
+    in  ()
 
 comments8 =
     [ {- A -} 7
@@ -119,23 +100,18 @@ comments8 =
     -- Z
     ]
 
-
 expressionDefinition {- F -} _ {- G -} _ =
     {- H -}
     {- I -}
     ()
 
-
 infix {- A -} 7 {- B -} ===
-(===) =
-    always
-
+(===) = always
 
 port {- A -} runner {- B -} : {- C -} Signal (Task.Task x ())
 port {- A -} runner {- B -} =
     -- C
     Signal.constant (Task.succeed ())
-
 
 blockCommentWithOnlyWhitespaceLines =
     {-
