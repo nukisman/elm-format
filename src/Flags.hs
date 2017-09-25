@@ -100,7 +100,7 @@ helpInfo defaultElmVersion elmFormatVersion experimental =
   where
     top =
         PP.vcat $ concat
-            [ [ PP.text $ "elm-format-short" ++ show defaultElmVersion ++ " " ++ elmFormatVersion ]
+            [ [ PP.text $ "elm-format-short-" ++ show defaultElmVersion ++ " " ++ elmFormatVersion ]
             , case experimental of
                   Just surveyUrl ->
                       [ (PP.<$>) (PP.text "") $
