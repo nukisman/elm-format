@@ -1,4 +1,4 @@
-{- AD -}
+{- AD TODO: extra blank line -}
 
 
 module {- A -} AllSyntax.BlockComments.Module {- B -} {- I -} exposing ({- C -} a {- D -}, {- E -} b {- F -}, {- G -} c {- H -})
@@ -28,17 +28,10 @@ import Task
         , toResult
         )
 
-
 {- AF -}
 
+a = 1
 
-a =
-    1
+b = 2
 
-
-b =
-    2
-
-
-c =
-    3
+c = 3

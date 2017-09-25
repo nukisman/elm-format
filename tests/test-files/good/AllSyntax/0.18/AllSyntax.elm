@@ -15,7 +15,6 @@ import Signal exposing (foldp, map)
 import String
 import Task
 
-
 type Data x y z
     = A
     | B Int
@@ -23,31 +22,25 @@ type Data x y z
     | D { f1 : Bool, f2 : x }
     | E (y -> z)
 
-
 type MultilineData
     = MultilineData
         { f1 : ()
         , f2 : Int -> Float
         }
 
-
 type Data2
     = Foo
     | Too
     | Bar
 
-
 type alias Type =
     String
-
 
 type alias TypeWithArgs a b c =
     List ( a, b, { field : c } )
 
-
 type alias MoreTypes x y z =
     { x | field : y, rec : { z : z }, fn : y -> String -> x }
-
 
 type alias ParensInTypes a b c =
     { f1 : a -> b
@@ -59,20 +52,17 @@ type alias ParensInTypes a b c =
     , f7 : List Type -> (a -> List b) -> List c
     }
 
-
 type alias MultilineRecordType =
     { x : Int
     , y : Int
     , z : Int
     }
 
-
 type alias MultilineRecordExtension a =
     { a
-        | b : Bool
-        , c : Char
+    | b : Bool
+    , c : Char
     }
-
 
 type alias NestedRecords a =
     { f1 : Int
@@ -82,7 +72,7 @@ type alias NestedRecords a =
         , multiline2 : { inner : List Char }
         , multiline3 :
             { a
-                | multiline' : Bool
+            | multiline' : Bool
             }
         }
     , f4 :
@@ -91,17 +81,12 @@ type alias NestedRecords a =
         MoreTypes Int Float Bool
     }
 
-
 {-| A function.
 -}
-fn =
-    "XYZZY"
-
+fn = "XYZZY"
 
 annotatedFn : String
-annotatedFn =
-    "XYZZY"
-
+annotatedFn = "XYZZY"
 
 fn2 :
     { x : Int
@@ -110,24 +95,16 @@ fn2 :
     -> String
     ->
         { a
-            | x : Float
+        | x : Float
         }
     -> Int
-fn2 _ _ _ =
-    999
+fn2 _ _ _ = 999
 
+inlinePipeline = 1 |> (+) 2
 
-inlinePipeline =
-    1 |> (+) 2
+tuple = ( 1, 2 )
 
-
-tuple =
-    ( 1, 2 )
-
-
-tupleFunction =
-    (,,,) 1 2 3 4
-
+tupleFunction = (,,,) 1 2 3 4
 
 multilineTuple a b =
     ( 1
@@ -140,24 +117,19 @@ multilineTuple a b =
         + 9
     )
 
-
 vars =
     ( Foo
     , Too
     , Bar
     )
 
-
-lists =
-    ( [ 1, 2, 3, 4 ], [] )
-
+lists = ( [ 1, 2, 3, 4 ], [] )
 
 multilineLists =
     [ "one"
     , "two"
     , "three"
     ]
-
 
 nestedMultilineLists =
     [ []
@@ -169,7 +141,6 @@ nestedMultilineLists =
     , [ [] ]
     ]
 
-
 functionCallInMultilineList =
     [ [ [ toString "a" ] ]
     , [ [ toString
@@ -179,53 +150,32 @@ functionCallInMultilineList =
       ]
     ]
 
+commentedLiterals = ( {- int -} 1, {- float -} 0.1, {- char -} 'c', {- string -} "str", {- boolean -} True )
 
-commentedLiterals =
-    ( {- int -} 1, {- float -} 0.1, {- char -} 'c', {- string -} "str", {- boolean -} True )
+functionApplication = toString 10
 
-
-functionApplication =
-    toString 10
-
-
-commentedFunctionApplication =
-    toString {- arg1 -} 10
-
+commentedFunctionApplication = toString {- arg1 -} 10
 
 multilineFunctionApplication =
     List.map toString
         [ 1, 2, 3 ]
 
+functionWithParam a = a
 
-functionWithParam a =
-    a
+functionParameters a b ( t, s, _, ( t', s', _, ( t'', s'' ), { x', y' } ) ) { x, y } _ = ()
 
+patternAlias ({ x, y } as r) ( a, { b } as r' ) = r.x == y
 
-functionParameters a b ( t, s, _, ( t', s', _, ( t'', s'' ), { x', y' } ) ) { x, y } _ =
-    ()
+fnAsLambda = \a -> a
 
-
-patternAlias ({ x, y } as r) ( a, { b } as r' ) =
-    r.x == y
-
-
-fnAsLambda =
-    \a -> a
-
-
-multiArgLambda =
-    \a b ( t, s, _, ( t', s', _, ( t'', s'' ), { x', y' } ) ) { x, y } _ -> \c -> \d -> ()
-
+multiArgLambda = \a b ( t, s, _, ( t', s', _, ( t'', s'' ), { x', y' } ) ) { x, y } _ -> \c -> \d -> ()
 
 multilineLambda =
     \a ->
         \b c ->
             \d -> e
 
-
-parenthesizedExpressions =
-    1 + (2 * 3) / 4 |> (+) 0
-
+parenthesizedExpressions = 1 + (2 * 3) / 4 |> (+) 0
 
 multilineParenthesizedExpressions graphHeight range =
     graphHeight
@@ -247,7 +197,6 @@ multilineParenthesizedExpressions graphHeight range =
                 0.0
             )
 
-
 multilineParenthesizedExpressions2 range arg =
     (if range == 0 then
         always 0.1
@@ -256,33 +205,25 @@ multilineParenthesizedExpressions2 range arg =
     )
         arg
 
+recordAccess r = r.f1
 
-recordAccess r =
-    r.f1
-
-
-recordAccessAsFunction r =
-    .f1 r
-
+recordAccessAsFunction r = .f1 r
 
 multilineRecordAccess f =
     (True
         |> f
     ).f1
 
-
 multilineRecordUpdate r f =
     { r
-        | f1 = 1
-        , f2 = 2
+    | f1 = 1
+    , f2 = 2
     }.f2
-
 
 multilineRecordAccess2 r f =
     { f1 = 1
     , f2 = 2
     }.f2
-
 
 chainedRecordAccess r =
     (r.f1.f2.f3.f4
@@ -290,39 +231,23 @@ chainedRecordAccess r =
         ()
     ).f5.f6
 
-
 multilineRecordLiteral =
     { f1 = ()
     , f2 = 2
     }
 
+singleLineRecord addStatus = addStatus { f1 = 50 }.f1
 
-singleLineRecord addStatus =
-    addStatus { f1 = 50 }.f1
-
-
-singleLineRecordUpdate x =
-    always { x | f1 = 20 }.f1
-
+singleLineRecordUpdate x = always { x | f1 = 20 }.f1
 
 letExpression =
-    let
-        x =
-            1
-    in
-    x
-
+    let x = 1
+    in  x
 
 multilineDeclarationInLet =
-    let
-        string =
-            "String"
-
-        string' =
-            "String Prime"
-    in
-    string
-
+    let string = "String"
+        string' = "String Prime"
+    in  string
 
 ifStatement b =
     if b == "y" then
@@ -332,25 +257,18 @@ ifStatement b =
     else
         "No"
 
-
 caseStatement mb =
     case mb of
-        Just True ->
-            "+"
-
-        Just _ ->
-            "_"
-
-        Nothing ->
-            "."
-
+    Just True ->
+        "+"
+    Just _ ->
+        "_"
+    Nothing ->
+        "."
 
 multilineExpressionsInsideList =
-    [ let
-        x =
-            1
-      in
-      always x
+    [ let x = 1
+      in  always x
     , if True then
         always 2
       else if False then
@@ -358,8 +276,8 @@ multilineExpressionsInsideList =
       else
         always 4
     , case True of
-        _ ->
-            always 5
+      _ ->
+        always 5
     , [ 6
       , 7
       ]
@@ -370,13 +288,9 @@ multilineExpressionsInsideList =
         9
     ]
 
-
 multilineExpressionsInsideTuple a foo =
-    ( let
-        x =
-            1
-      in
-      x
+    ( let x = 1
+      in  x
     , if True then
         2
       else if False then
@@ -384,8 +298,8 @@ multilineExpressionsInsideTuple a foo =
       else
         4
     , case True of
-        _ ->
-            5
+      _ ->
+        5
     , [ 6
       , 7
       ]
@@ -402,19 +316,15 @@ multilineExpressionsInsideTuple a foo =
       , y = 14
       }
     , { a
-        | x = 15
-        , y = 16
+      | x = 15
+      , y = 16
       }
     )
 
-
 multilineExpressionsInsideRecord =
     { a =
-        let
-            x =
-                1
-        in
-        x
+        let x = 1
+        in  x
     , b =
         if True then
             2
@@ -424,8 +334,8 @@ multilineExpressionsInsideRecord =
             4
     , c =
         case True of
-            _ ->
-                5
+        _ ->
+            5
     , d =
         [ 6
         , 7
@@ -436,7 +346,6 @@ multilineExpressionsInsideRecord =
         \a ->
             9
     }
-
 
 multilineIfCondition a b =
     if
@@ -456,7 +365,6 @@ multilineIfCondition a b =
     else
         "No"
 
-
 multilineCaseSubject a =
     case
         if a == Nothing then
@@ -464,13 +372,10 @@ multilineCaseSubject a =
         else
             "Y"
     of
-        _ ->
-            ()
+    _ ->
+        ()
 
-
-singleLineRange =
-    [{ f1 = 6 }.f1..(9 + 6 |> (-) 2) + 2]
-
+singleLineRange = [{ f1 = 6 }.f1..(9 + 6 |> (-) 2) + 2]
 
 multilineRange =
     [
@@ -484,7 +389,6 @@ multilineRange =
         else
             5
     ]
-
 
 nestedMultilineRange =
     [ [
@@ -500,7 +404,6 @@ nestedMultilineRange =
       ]
     , [4..2]
     ]
-
 
 indentedMultilineInsideMultilineInfixApplication div id =
     div [ id "page" ]
@@ -522,44 +425,28 @@ indentedMultilineInsideMultilineInfixApplication div id =
             , y = 2
             }
 
-
 port runner : Signal (Task.Task x ())
 port runner =
     Signal.constant (Task.succeed ())
 
-
 infixl 4 |.
 (|.) : Data a b z -> Data b c z -> Data a b z
-(|.) =
-    always
-
+(|.) = always
 
 infix 1 <>
-(<>) =
-    always
-
+(<>) = always
 
 infixr 8 <<>>
-(<<>>) =
-    always
-
+(<<>>) = always
 
 infixr 9 ==/==
-(==/==) =
-    always
+(==/==) = always
 
+(***) = always
 
-(***) =
-    always
-
-
-(@) =
-    always
-
+(@) = always
 
 port portFollowedByAnnotation : Signal Int
 
-
 somethingAfterIncomingPort : ()
-somethingAfterIncomingPort =
-    ()
+somethingAfterIncomingPort = ()

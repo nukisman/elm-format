@@ -1,13 +1,11 @@
 module AllSyntax.Expressions exposing (..)
 
-
 unit =
     [ ()
     , ({- A -})
     , (--B
       )
     ]
-
 
 literal =
     ( 1
@@ -16,21 +14,15 @@ literal =
     , 'c'
     )
 
+var x = x
 
-var x =
-    x
-
-
-operator =
-    (+)
-
+operator = (+)
 
 infixPipeLeft x y z =
     x <|
         [ y
         , z
         ]
-
 
 infixPipeLeft2 x y z =
     [ x
@@ -40,33 +32,22 @@ infixPipeLeft2 x y z =
         , z
         ]
 
-
-functionApplication =
-    max 1 2
-
+functionApplication = max 1 2
 
 functionApplicationMultilineWithFirstArg =
     max 1
         2
-
 
 functionApplicationMultiline =
     max
         1
         2
 
+unary x = -x
 
-unary x =
-    -x
+binary = 1 + 2 + 3
 
-
-binary =
-    1 + 2 + 3
-
-
-parens f x a =
-    f (x a)
-
+parens f x a = f (x a)
 
 emptyList =
     [ []
@@ -74,7 +55,6 @@ emptyList =
     , [--B
       ]
     ]
-
 
 list =
     [ [ (), () ]
@@ -99,7 +79,6 @@ list =
       ]
     ]
 
-
 listWithCommentedOutItems =
     [ 1
 
@@ -110,7 +89,6 @@ listWithCommentedOutItems =
     -- , 5
     , 6
     ]
-
 
 tuple =
     [ ( 1, 2 )
@@ -129,7 +107,6 @@ tuple =
       )
     ]
 
-
 tupleWithCommentedOutItems =
     ( 1
       -- , 2
@@ -139,10 +116,7 @@ tupleWithCommentedOutItems =
     , 6
     )
 
-
-tupleFunction =
-    (,,) 1 2 3
-
+tupleFunction = (,,) 1 2 3
 
 emptyRecord =
     [ {}
@@ -150,7 +124,6 @@ emptyRecord =
     , { --B
       }
     ]
-
 
 record =
     ( { x = 1 }
@@ -200,7 +173,6 @@ record =
       }
     )
 
-
 recordWithCommentedOutFields =
     { x = 1
 
@@ -211,31 +183,28 @@ recordWithCommentedOutFields =
     -- , b = 5
     }
 
-
 recordUpdate a =
     ( { a | x = 1 }
     , { a | x = 1, y = 2 }
     , { a
-        | x = 1
+      | x = 1
       }
     , { a
-        | x = 1
-        , y = 2
+      | x = 1
+      , y = 2
       }
     )
 
-
 recordUpdateWithCommentedOutFields a =
     { a
-        | x = 1
+    | x = 1
 
-        -- , y = 2
-        -- , z = 3
-        , a = 4
+    -- , y = 2
+    -- , z = 3
+    , a = 4
 
-        -- , b = 5
+    -- , b = 5
     }
-
 
 recordAccess f a b r =
     ( ().x
@@ -249,14 +218,9 @@ recordAccess f a b r =
     , a.x.y
     )
 
+recordAccessfunction = .x { x = 1 }
 
-recordAccessfunction =
-    .x { x = 1 }
-
-
-lambda =
-    \x -> x + 1
-
+lambda = \x -> x + 1
 
 lambdaWithMultilinePattern =
     \{ x
@@ -266,17 +230,8 @@ lambdaWithMultilinePattern =
     ->
         ()
 
-
 ifStatement =
-    let
-        a =
-            if True then
-                1
-            else if False then
-                2
-            else
-                3
-
+    let a = if True then 1 else if False then 2 else 3
         b =
             if {- C -} True {- D -} then
                 {- E -}
@@ -289,7 +244,6 @@ ifStatement =
             else
                 {- L -}
                 3
-
         c =
             if
                 --C
@@ -312,65 +266,50 @@ ifStatement =
             else
                 --L
                 3
-    in
-    {}
-
+    in  {}
 
 letStatement =
-    let
-        x =
-            1
-
-        y =
-            2
-    in
-    ( x, y )
-
+    let x = 1
+        y = 2
+    in  ( x, y )
 
 caseStatement =
-    let
-        a =
+    let a =
             case Just 1 of
-                Just x ->
-                    x
-
-                _ ->
-                    2
-
+            Just x ->
+                x
+            _ ->
+                2
         b =
             case {- M -} Just 1 {- N -} of
-                {- O -}
-                Just x
-                {- P -}
-                ->
-                    {- Q -}
-                    x
-
-                {- R -}
-                _
-                {- S -}
-                ->
-                    {- T -}
-                    2
-
+            {- O -}
+            Just x
+            {- P -}
+            ->
+                {- Q -}
+                x
+            {- R -}
+            _
+            {- S -}
+            ->
+                {- T -}
+                2
         c =
             case
                 --M
                 Just 1
                 --N
             of
-                --O
-                Just x
-                --P
-                ->
-                    --Q
-                    x
-
-                --R
-                _
-                --S
-                ->
-                    --T
-                    2
-    in
-    {}
+            --O
+            Just x
+            --P
+            ->
+                --Q
+                x
+            --R
+            _
+            --S
+            ->
+                --T
+                2
+    in  {}

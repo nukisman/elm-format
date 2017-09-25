@@ -1,5 +1,3 @@
 module X exposing (..)
 
-
-a =
-    123
+a = 123

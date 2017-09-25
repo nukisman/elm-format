@@ -2,14 +2,12 @@ module AllSyntax.Types exposing (..)
 
 import Dict exposing (Dict)
 
-
 type alias Unit =
     ( ()
     , ({- A -})
     , (--B
       )
     )
-
 
 type alias Function =
     ( () -> () -> ()
@@ -39,10 +37,8 @@ type alias Function =
       -> () --C
     )
 
-
 type alias Variable a =
     a
-
 
 type alias Constructor =
     ( Bool
@@ -56,7 +52,6 @@ type alias Constructor =
         Int
     )
 
-
 type alias Parens =
     ( ({- A -} Int {- B -})
     , (--A
@@ -64,7 +59,6 @@ type alias Parens =
        --B
       )
     )
-
 
 type alias TupleConstructor =
     ( (,) Int String
@@ -78,7 +72,6 @@ type alias TupleConstructor =
         --E
         Bool
     )
-
 
 type alias Tuple =
     ( ( a, b )
@@ -95,7 +88,6 @@ type alias Tuple =
       )
     )
 
-
 type alias TupleWithCommentedOutTerms =
     ( Int
       -- , Int
@@ -104,11 +96,8 @@ type alias TupleWithCommentedOutTerms =
       -- , Int
     )
 
-
 emptyRecord : {} -> ()
-emptyRecord _ =
-    ()
-
+emptyRecord _ = ()
 
 type alias Record =
     ( { x : Int, y : () }
@@ -116,7 +105,6 @@ type alias Record =
       , y : () -- Y
       }
     )
-
 
 type alias RecordWithCommentedOutTerms =
     { a : Int
@@ -128,19 +116,16 @@ type alias RecordWithCommentedOutTerms =
     -- , e : Int
     }
 
-
 recordExtension : { a | x : Int, y : Int } -> ()
-recordExtension _ =
-    ()
-
+recordExtension _ = ()
 
 type alias RecordExtensionWithCommentedOutTerms z =
     { z
-        | a : Int
+    | a : Int
 
-        -- , b : Int
-        -- , c : Int
-        , d : Int
+    -- , b : Int
+    -- , c : Int
+    , d : Int
 
-        -- , e : Int
+    -- , e : Int
     }

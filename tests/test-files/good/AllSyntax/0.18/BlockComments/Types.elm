@@ -1,10 +1,7 @@
 module AllSyntax.BlockComments.Types exposing (..)
 
-
 emptyRecord : {{- M -}} -> ()
-emptyRecord _ =
-    ()
-
+emptyRecord _ = ()
 
 record :
     { {- N -} x {- O -} : {- P -} Int
@@ -15,19 +12,16 @@ record :
     {- U -}
     }
     -> ()
-record _ =
-    ()
-
+record _ = ()
 
 recordExtension :
     { {- V -} a {- W -}
-        | {- X -} x {- Y -} : {- Z -} Int
+    | {- X -} x {- Y -} : {- Z -} Int
 
-        {- AA -}
-        , {- AB -} y {- AC -} : {- AD -} Int
+    {- AA -}
+    , {- AB -} y {- AC -} : {- AD -} Int
 
-        {- AE -}
+    {- AE -}
     }
     -> ()
-recordExtension _ =
-    ()
+recordExtension _ = ()

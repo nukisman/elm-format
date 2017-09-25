@@ -1,21 +1,13 @@
 module AllSyntax.LineComments.Patterns exposing (..)
 
-
 type Foo
     = Foo () ()
 
+wildcard _ = ()
 
-wildcard _ =
-    ()
+literal 1 2.0 "string" 'c' = ()
 
-
-literal 1 2.0 "string" 'c' =
-    ()
-
-
-variable v =
-    ()
-
+variable v = ()
 
 data
     (Foo
@@ -27,13 +19,11 @@ data
     =
     ()
 
-
 unit
     (--A
     )
     =
     ()
-
 
 parens
     (--W
@@ -42,7 +32,6 @@ parens
     )
     =
     ()
-
 
 tuple
     ( --B
@@ -55,13 +44,11 @@ tuple
     =
     ()
 
-
 emptyList
     [--F
     ]
     =
     ()
-
 
 list
     [ --G
@@ -74,7 +61,6 @@ list
     =
     ()
 
-
 consList
     (a --T
         :: --U
@@ -85,7 +71,6 @@ consList
     )
     =
     ()
-
 
 record
     { --K
@@ -98,7 +83,6 @@ record
     =
     ()
 
-
 asAlias
     (()
      --O
@@ -109,6 +93,4 @@ asAlias
     =
     ()
 
-
-complexCons (a :: (x :: []) :: ((b :: _) as blah)) =
-    ()
+complexCons (a :: (x :: []) :: ((b :: _) as blah)) = ()

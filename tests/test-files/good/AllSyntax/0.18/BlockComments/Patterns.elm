@@ -1,57 +1,30 @@
 module AllSyntax.BlockComments.Patterns exposing (..)
 
-
 type Foo
     = Foo () ()
 
+wildcard _ = ()
 
-wildcard _ =
-    ()
+literal 1 2.0 "string" 'c' = ()
 
+variable v = ()
 
-literal 1 2.0 "string" 'c' =
-    ()
+data (Foo {- Q -} x {- R -} y) = ()
 
+unit ({- A -}) = ()
 
-variable v =
-    ()
+parens ({- W -} v {- X -}) = ()
 
+tuple ( {- B -} a {- C -}, {- D -} b {- E -} ) = ()
 
-data (Foo {- Q -} x {- R -} y) =
-    ()
+emptyList [{- F -}] = ()
 
+list [ {- G -} a {- H -}, {- I -} b {- J -} ] = ()
 
-unit ({- A -}) =
-    ()
+consList (a {- S -} :: {- T -} b {- U -} :: {- V -} c) = ()
 
+record { {- K -} a {- L -}, {- M -} b {- N -} } = ()
 
-parens ({- W -} v {- X -}) =
-    ()
+asAlias (() {- O -} as {- P -} x) = ()
 
-
-tuple ( {- B -} a {- C -}, {- D -} b {- E -} ) =
-    ()
-
-
-emptyList [{- F -}] =
-    ()
-
-
-list [ {- G -} a {- H -}, {- I -} b {- J -} ] =
-    ()
-
-
-consList (a {- S -} :: {- T -} b {- U -} :: {- V -} c) =
-    ()
-
-
-record { {- K -} a {- L -}, {- M -} b {- N -} } =
-    ()
-
-
-asAlias (() {- O -} as {- P -} x) =
-    ()
-
-
-complexCons (a :: (x :: []) :: ((b :: _) as blah)) =
-    ()
+complexCons (a :: (x :: []) :: ((b :: _) as blah)) = ()
