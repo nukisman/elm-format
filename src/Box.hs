@@ -5,7 +5,7 @@ module Box
   , isLine, allSingles, lineLength
   , indent, prefix, addSuffix
   , render
-  , destructure
+  , destructure, tabSpaces
   ) where
 
 import Elm.Utils ((|>))
@@ -145,8 +145,10 @@ mapFirstLine firstFn restFn b =
 
 indent :: Box -> Box
 indent =
-    mapLines (\l -> row [Tab, l])
+    mapLines (\l -> row [tabSpaces, l])
 
+tabSpaces :: Line
+tabSpaces = row $ replicate spacesInTab space
 
 isLine :: Box -> Either Box Line
 isLine b =

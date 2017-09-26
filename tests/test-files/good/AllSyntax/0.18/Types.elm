@@ -17,21 +17,21 @@ type alias Function =
     , (--
       )
       ->
-        (--
-        )
+          (--
+          )
       ->
-        (--
-        )
+          (--
+          )
     , () {- AF -} -> {- AG -} () {- AH -} -> {- AI -} ()
     , () --A
       --B
       ->
-        --C
-        ()
+          --C
+          ()
       --D
       ->
-        --G
-        ()
+          --G
+          ()
     , () --A
       -> () --B
       -> () --C
@@ -46,10 +46,10 @@ type alias Constructor =
     , Dict.Dict String Int
     , Dict.Dict {- A -} String {- B -} Int
     , Dict.Dict
-        -- A
-        String
-        -- B
-        Int
+          -- A
+          String
+          -- B
+          Int
     )
 
 type alias Parens =
@@ -65,12 +65,12 @@ type alias TupleConstructor =
     , (,,) Int String Bool
     , (,,) {- C -} Int {- D -} String {- E -} Bool
     , (,,)
-        -- C
-        Int
-        -- D
-        String
-        --E
-        Bool
+          -- C
+          Int
+          -- D
+          String
+          --E
+          Bool
     )
 
 type alias Tuple =

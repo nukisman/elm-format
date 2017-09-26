@@ -1113,7 +1113,8 @@ formatExpression elmVersion context aexpr =
                         letDefsNew =
                             case letDefs of
                                 (headBox:tailBoxes) ->
-                                    let -- (Line, [Line])
+                                    let -- todo: Use prefix ?
+                                        -- (Line, [Line])
                                         (l, ls) = destructure headBox
 
                                         newHead :: Box -- One space
@@ -1148,9 +1149,9 @@ formatExpression elmVersion context aexpr =
                         inDefsNew =
                             case inDefs of
                                 (headBox:tailBoxes) ->
-                                    let -- (Line, [Line])
+                                    let -- todo: Use prefix ?
+                                        -- (Line, [Line])
                                         (l, ls) = destructure headBox
-
                                         newHead :: Box -- Two spaces
                                         newHead =
                                             let first :: Box
@@ -1164,9 +1165,9 @@ formatExpression elmVersion context aexpr =
                                                     stack1
                                                         [ first
                                                         , Stack
-                                                            (row [tab, a])
-                                                            (row [tab, b])
-                                                            (map (\l -> row [tab, l]) rest)
+                                                            (row [tabSpaces, a])
+                                                            (row [tabSpaces, b])
+                                                            (map (\l -> row [tabSpaces, l]) rest)
                                                         ]
 
                                         newTail :: [Box]
@@ -1213,24 +1214,23 @@ formatExpression elmVersion context aexpr =
                     of
                         (_, _, SingleLine pat', body') ->
                             stack1
-                                [ line $ row [ pat', space, keyword "->"]
-                                , indent body'
+                                [ line pat'
+                                , prefix (row [ space, keyword "->", space]) body'
                                 ]
                         (Commented pre _ [], SingleLine pat', _, body') ->
                             stack1 $
                                 (map formatComment pre)
-                                ++ [ line $ row [ pat', space, keyword "->"]
-                                   , indent body'
+                                ++ [ line pat'
+                                   , prefix (row [ space, keyword "->", space]) body'
                                    ]
                         (_, _, pat', body') ->
                             stack1 $
                               [ pat'
-                              , line $ keyword "->"
-                              , indent body'
+                              , prefix (row [ space, keyword "->", space]) body'
                               ]
             in
                 opening
-                    |> andThen (clauses |> map clause )
+                    |> andThen (clauses |> map clause |> map indent)
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
         AST.Expression.Tuple exprs multiline ->

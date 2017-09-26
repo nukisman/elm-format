@@ -38,8 +38,8 @@ records =
       f1 = ()
     , f2
       -- after a field
-        =
-        ()
+          =
+          ()
     , f3 = ()
     }
 
@@ -53,14 +53,14 @@ comments3 =
 
 comments4 bool =
     case bool of
-    -- This case is for True
-    True ->
-        -- return unit
-        ()
-    {- Here's a case for anything else -}
-    _ ->
-        {- return unit -}
-        ()
+        -- This case is for True
+        True
+         -> -- return unit
+            ()
+        {- Here's a case for anything else -}
+        _
+         -> {- return unit -}
+            ()
 
 comments5 =
     if True then
@@ -82,8 +82,8 @@ comments6 =
 comments7 =
     let x =
             case True of
-            _ ->
-                ()
+                _
+                 -> ()
         -- comments
         y = ()
     in  ()

@@ -287,58 +287,54 @@ letStatement =
 caseStatement =
     let aLongName =
             case Just 1 of
-            Just x ->
-                x
-            _ ->
-                2
+                Just x
+                 -> x
+                _
+                 -> 2
         wLongName =
             case Just 1 of
-            _ ->
-                2
+                _
+                 -> 2
         aa =
             case Just 1 of
-            Just x ->
-                x
-            Just 123 ->
-                456
-            _ ->
-                2
+                Just x
+                 -> x
+                Just 123
+                 -> 456
+                _
+                 -> 2
         b =
             case {- M -} Just 1 {- N -} of
-            {- O -}
-            Just x
-            {- P -}
-            ->
-                {- Q -}
-                x
-            {- R -}
-            _
-            {- S -}
-            ->
-                {- T -}
-                2
+                {- O -}
+                Just x
+                {- P -}
+                 -> {- Q -}
+                    x
+                {- R -}
+                _
+                {- S -}
+                 -> {- T -}
+                    2
         c =
             case
                 --M
                 Just 1
                 --N
             of
-            --O
-            Just x
-            --P
-            ->
-                --Q
-                x
-            --R
-            _
-            --S
-            ->
-                --T
-                2
+                --O
+                Just x
+                --P
+                 -> --Q
+                    x
+                --R
+                _
+                --S
+                 -> --T
+                    2
     in  let aLongName =
                 case Just 1 of
-                Just x ->
-                    x
-                _ ->
-                    2
+                    Just x
+                     -> x
+                    _
+                     -> 2
         in  {}

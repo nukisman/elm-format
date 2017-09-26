@@ -26,20 +26,20 @@ consList
     , a {- 1 -} :: {- 2 -} b {- 3 -} :: {- 4 -} c
     , --0
       d --1
-        :: --2
-           e
-        --3
-        :: --4
-           f
+          :: --2
+             e
+          --3
+          :: --4
+             f
       --5
     , d
-        --E
-        :: e
-        --F
-        :: f
+          --E
+          :: e
+          --F
+          :: f
     , d --D
-        :: e --E
-        :: f --F
+          :: e --E
+          :: f --F
     )
     =
     ()
@@ -52,22 +52,22 @@ asAlias (() as x) = ()
 
 patternWithQualifiedConstructorAsCosntructorArgument m =
     case m of
-    Maybe.Just Maybe.Nothing ->
-        ()
-    Maybe.Just _ ->
-        ()
-    Maybe.Nothing ->
-        ()
+        Maybe.Just Maybe.Nothing
+         -> ()
+        Maybe.Just _
+         -> ()
+        Maybe.Nothing
+         -> ()
 
 patternWithUnqualifiedConstructorAsCosntructorArgument m =
     case m of
-    Maybe.Just Nothing ->
-        ()
-    (Just _) as x ->
-        ()
-    Nothing as x ->
-        ()
-    (Maybe.Nothing as y) as x ->
-        ()
-    _ ->
-        ()
+        Maybe.Just Nothing
+         -> ()
+        (Just _) as x
+         -> ()
+        Nothing as x
+         -> ()
+        (Maybe.Nothing as y) as x
+         -> ()
+        _
+         -> ()

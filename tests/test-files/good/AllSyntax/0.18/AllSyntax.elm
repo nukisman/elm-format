@@ -24,9 +24,9 @@ type Data x y z
 
 type MultilineData
     = MultilineData
-        { f1 : ()
-        , f2 : Int -> Float
-        }
+          { f1 : ()
+          , f2 : Int -> Float
+          }
 
 type Data2
     = Foo
@@ -68,17 +68,17 @@ type alias NestedRecords a =
     { f1 : Int
     , f2 : { singleLine : () }
     , f3 :
-        { multiline1 : ( (), () )
-        , multiline2 : { inner : List Char }
-        , multiline3 :
-            { a
-            | multiline' : Bool
-            }
-        }
+          { multiline1 : ( (), () )
+          , multiline2 : { inner : List Char }
+          , multiline3 :
+                { a
+                | multiline' : Bool
+                }
+          }
     , f4 :
-        { single : {} }
+          { single : {} }
     , f5 :
-        MoreTypes Int Float Bool
+          MoreTypes Int Float Bool
     }
 
 {-| A function.
@@ -109,12 +109,12 @@ tupleFunction = (,,,) 1 2 3 4
 multilineTuple a b =
     ( 1
     , if b then
-        2
+          2
       else
-        3
+          3
     , (+) 3 4
     , 7
-        + 9
+          + 9
     )
 
 vars =
@@ -144,8 +144,8 @@ nestedMultilineLists =
 functionCallInMultilineList =
     [ [ [ toString "a" ] ]
     , [ [ toString
-            -- A
-            "a"
+              -- A
+              "a"
         ]
       ]
     ]
@@ -180,28 +180,28 @@ parenthesizedExpressions = 1 + (2 * 3) / 4 |> (+) 0
 multilineParenthesizedExpressions graphHeight range =
     graphHeight
         / (if range == 0 then
-            0.1
+               0.1
            else
-            toFloat range
+               toFloat range
           )
         ==/==
             (if range == 0 then
-                0.2
+                 0.2
              else
-                toFloat (range - 1)
+                 toFloat (range - 1)
             )
         <<>>
             (if range == 0 then
-                -1.0
+                 -1.0
              else
-                0.0
+                 0.0
             )
 
 multilineParenthesizedExpressions2 range arg =
     (if range == 0 then
-        always 0.1
+         always 0.1
      else
-        toFloat range
+         toFloat range
     )
         arg
 
@@ -211,7 +211,7 @@ recordAccessAsFunction r = .f1 r
 
 multilineRecordAccess f =
     (True
-        |> f
+         |> f
     ).f1
 
 multilineRecordUpdate r f =
@@ -227,8 +227,8 @@ multilineRecordAccess2 r f =
 
 chainedRecordAccess r =
     (r.f1.f2.f3.f4
-        -- A
-        ()
+         -- A
+         ()
     ).f5.f6
 
 multilineRecordLiteral =
@@ -259,56 +259,61 @@ ifStatement b =
 
 caseStatement mb =
     case mb of
-    Just True ->
-        "+"
-    Just _ ->
-        "_"
-    Nothing ->
-        "."
+        Just True
+         -> "+"
+        Just _
+         -> "_"
+        Nothing
+         -> "."
 
 multilineExpressionsInsideList =
     [ let x = 1
       in  always x
     , if True then
-        always 2
+          always 2
       else if False then
-        always 3
+          always 3
       else
-        always 4
+          always 4
     , case True of
-      _ ->
-        always 5
+          _
+           -> always 5
+    , ( 123
+      , case True of
+            _
+             -> always 5
+      )
     , [ 6
       , 7
       ]
-        |> head
-        |> Maybe.withDefault 8
-        |> always
+          |> head
+          |> Maybe.withDefault 8
+          |> always
     , \a ->
-        9
+          9
     ]
 
 multilineExpressionsInsideTuple a foo =
     ( let x = 1
       in  x
     , if True then
-        2
+          2
       else if False then
-        3
+          3
       else
-        4
+          4
     , case True of
-      _ ->
-        5
+          _
+           -> 5
     , [ 6
       , 7
       ]
-        |> head
-        |> Maybe.withDefault 8
+          |> head
+          |> Maybe.withDefault 8
     , \a ->
-        9
+          9
     , foo 17
-        10
+          10
     , ( 11
       , 12
       )
@@ -323,28 +328,28 @@ multilineExpressionsInsideTuple a foo =
 
 multilineExpressionsInsideRecord =
     { a =
-        let x = 1
-        in  x
+          let x = 1
+          in  x
     , b =
-        if True then
-            2
-        else if False then
-            3
-        else
-            4
+          if True then
+              2
+          else if False then
+              3
+          else
+              4
     , c =
-        case True of
-        _ ->
-            5
+          case True of
+              _
+               -> 5
     , d =
-        [ 6
-        , 7
-        ]
-            |> head
-            |> Maybe.withDefault 8
+          [ 6
+          , 7
+          ]
+              |> head
+              |> Maybe.withDefault 8
     , e =
-        \a ->
-            9
+          \a ->
+              9
     }
 
 multilineIfCondition a b =
@@ -372,8 +377,8 @@ multilineCaseSubject a =
         else
             "Y"
     of
-    _ ->
-        ()
+        _
+         -> ()
 
 singleLineRange = [{ f1 = 6 }.f1..(9 + 6 |> (-) 2) + 2]
 
@@ -392,15 +397,15 @@ multilineRange =
 
 nestedMultilineRange =
     [ [
-        if True then
-            1
-        else
-            2
+          if True then
+              1
+          else
+              2
       ..
-        if False then
-            3
-        else
-            5
+          if False then
+              3
+          else
+              5
       ]
     , [4..2]
     ]

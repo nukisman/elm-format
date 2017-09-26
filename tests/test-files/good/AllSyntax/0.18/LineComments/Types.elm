@@ -11,16 +11,16 @@ emptyRecord _ = ()
 record :
     { --N
       x :
-        --P
-        Int
+          --P
+          Int
 
     --Q
     , --R
       y
       --S
-        :
-        --T
-        ()
+          :
+          --T
+          ()
 
     --U
     }
@@ -34,17 +34,17 @@ recordExtension :
     | --X
       x
       --Y
-        :
-        --Z
-        Int
+          :
+          --Z
+          Int
 
     --AA
     , --AB
       y
       --AC
-        :
-        --AD
-        Int
+          :
+          --AD
+          Int
 
     --AE
     }

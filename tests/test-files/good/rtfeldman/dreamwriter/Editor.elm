@@ -12,20 +12,17 @@ import Maybe
 import Signal exposing (Address, mailbox)
 import String
 
-
 type alias Addresses a =
     { a
-        | fullscreen : Address FullscreenState
-        , remoteSync : Address ()
-        , execCommand : Address String
+    | fullscreen : Address FullscreenState
+    , remoteSync : Address ()
+    , execCommand : Address String
     }
-
 
 type alias Model =
     { currentDoc : Doc
     , fullscreen : FullscreenState
     }
-
 
 initialModel : Model
 initialModel =
@@ -33,11 +30,8 @@ initialModel =
     , fullscreen = False
     }
 
-
 view : Addresses a -> Model -> Html
-view channels model =
-    lazy3 viewEditor channels model.currentDoc model.fullscreen
-
+view channels model = lazy3 viewEditor channels model.currentDoc model.fullscreen
 
 viewEditor : Addresses a -> Doc -> FullscreenState -> Html
 viewEditor channels currentDoc fullscreen =
@@ -48,7 +42,6 @@ viewEditor channels currentDoc fullscreen =
             , viewEditorFooter channels currentDoc fullscreen
             ]
         ]
-
 
 viewEditorHeader : Addresses a -> Doc -> FullscreenState -> Html
 viewEditorHeader channels currentDoc fullscreen =
@@ -71,78 +64,60 @@ viewEditorHeader channels currentDoc fullscreen =
         , lazy2 viewFullscreenButton channels.fullscreen fullscreen
         ]
 
-
 viewEditorFooter : Addresses a -> Doc -> FullscreenState -> Html
 viewEditorFooter channels currentDoc fullscreen =
-    let
-        countChapterWords chapter =
-            chapter.headingWords + chapter.bodyWords
-
+    let countChapterWords chapter = chapter.headingWords + chapter.bodyWords
         chapterWords =
             currentDoc.chapters
                 |> List.map countChapterWords
                 |> List.sum
-
         wordCount =
             currentDoc.titleWords
                 + currentDoc.descriptionWords
                 + chapterWords
-
-        wordCountLabel =
-            pluralize "word" wordCount ++ " saved "
-    in
-    div [ id "editor-footer" ]
-        [ div [ id "doc-word-count" ]
-            [ text wordCountLabel
-            , WordGraph.viewWordGraph currentDoc.dailyWords
-            ]
-        , div [ id "dropbox-sync" ]
-            [ input
-                [ id "toggle-dropbox-sync"
-                , property "type" (string "checkbox")
-                , onClick channels.remoteSync ()
+        wordCountLabel = pluralize "word" wordCount ++ " saved "
+    in  div [ id "editor-footer" ]
+            [ div [ id "doc-word-count" ]
+                [ text wordCountLabel
+                , WordGraph.viewWordGraph currentDoc.dailyWords
                 ]
-                []
-            , label [ for "toggle-dropbox-sync" ]
-                [ text " sync to Dropbox" ]
+            , div [ id "dropbox-sync" ]
+                [ input
+                    [ id "toggle-dropbox-sync"
+                    , property "type" (string "checkbox")
+                    , onClick channels.remoteSync ()
+                    ]
+                    []
+                , label [ for "toggle-dropbox-sync" ]
+                    [ text " sync to Dropbox" ]
+                ]
             ]
-        ]
-
 
 viewOutline : Addresses a -> Doc -> FullscreenState -> Html
 viewOutline channels currentDoc fullscreen =
-    let
-        outlineHeadingNodes =
+    let outlineHeadingNodes =
             [ h1 [ id "edit-title" ] []
             , div [ id "edit-description" ] []
             ]
-
         outlineChapterNodes =
             List.concatMap (.id >> lazyViewChapter)
                 currentDoc.chapters
-    in
-    div [ id "document-page" ]
-        (outlineHeadingNodes ++ outlineChapterNodes)
-
+    in div [ id "document-page" ]
+            (outlineHeadingNodes ++ outlineChapterNodes)
 
 withCommas : Int -> String
 withCommas num =
     if num >= 1000 then
-        let
-            prefix =
+        let prefix =
                 (num / 1000)
                     |> floor
                     |> withCommas
-
             suffix =
                 num
                     |> toString
                     |> String.right 3
-        in
-        prefix ++ "," ++ suffix
-    else
-        toString num
-
+        in  prefix ++ "," ++ suffix
+    else toString num
 
 pluralize : String -> Int -> String
 pluralize noun quantity =
@@ -151,38 +126,34 @@ pluralize noun quantity =
     else
         withCommas quantity ++ " " ++ noun ++ "s"
 
-
 viewFullscreenButton : Address FullscreenState -> FullscreenState -> Html
 viewFullscreenButton fullscreenChannel fullscreen =
-    let
-        { fullscreenClass, targetMode, fullscreenTitle } =
+    let { fullscreenClass, targetMode, fullscreenTitle } =
             case fullscreen of
-                True ->
+                True
+                 ->
                     { fullscreenClass = "flaticon-collapsing"
                     , targetMode = False
                     , fullscreenTitle = "Leave Fullscreen Mode"
                     }
-
-                False ->
+                False
+                 ->
                     { fullscreenClass = "flaticon-expand"
                     , targetMode = True
                     , fullscreenTitle = "Enter Fullscreen Mode"
                     }
-    in
-    div
-        [ class ("toolbar-section toolbar-button " ++ fullscreenClass)
-        , title fullscreenTitle
-        , onClick fullscreenChannel targetMode
-        ]
-        []
-
+    in  div
+            [ class ("toolbar-section toolbar-button " ++ fullscreenClass)
+            , title fullscreenTitle
+            , onClick fullscreenChannel targetMode
+            ]
+            []
 
 lazyViewChapter : Identifier -> List Html
 lazyViewChapter chapterId =
     [ lazy viewChapterHeading chapterId
     , lazy viewChapterBody chapterId
     ]
-
 
 viewChapterBody : Identifier -> Html
 viewChapterBody chapterId =
@@ -193,7 +164,6 @@ viewChapterBody chapterId =
         ]
         []
 
-
 viewChapterHeading : Identifier -> Html
 viewChapterHeading chapterId =
     h2
@@ -202,7 +172,6 @@ viewChapterHeading chapterId =
         , class "chapter-heading"
         ]
         []
-
 
 viewFontControl : Address String -> String -> String -> String -> Html
 viewFontControl execCommandChannel idAttr label command =

@@ -11,10 +11,10 @@ variable v = ()
 
 data
     (Foo
-        --Q
-        x
-        --R
-        y
+         --Q
+         x
+         --R
+         y
     )
     =
     ()
@@ -63,11 +63,11 @@ list
 
 consList
     (a --T
-        :: --U
-           b
-        --V
-        :: --W
-           c
+         :: --U
+            b
+         --V
+         :: --W
+            c
     )
     =
     ()
@@ -87,8 +87,8 @@ asAlias
     (()
      --O
      as
-        --P
-        x
+         --P
+         x
     )
     =
     ()

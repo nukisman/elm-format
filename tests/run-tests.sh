@@ -16,7 +16,7 @@ if which shellcheck; then
 	shellcheck "./package/linux/build-package.sh" || exit 1
 fi
 
-stack build || exit 1
+stack build --ghc-options=-Wno-name-shadowing || exit 1
 
 ELM_FORMAT="$(stack path --local-install-root)/bin/elm-format-short-0.18"
 if [ ! -e "$ELM_FORMAT" ]; then
@@ -334,7 +334,7 @@ checkGood 0.18 WorkaroundNegativeCasePatterns.elm
 
 checkGood 0.18 evancz/start-app/StartApp.elm
 checkGood 0.18 TheSeamau5/elm-check/Check.elm
-#checkGood 0.18 rtfeldman/dreamwriter/Editor.elm
+#checkGood 0.18 rtfeldman/dreamwriter/Editor.elm     # <--------
 #checkGood 0.18 rtfeldman/dreamwriter/LeftSidebar.elm
 #checkGood 0.18 rtfeldman/dreamwriter/RightSidebar.elm
 #checkGood 0.18 rtfeldman/dreamwriter/WordGraph.elm

@@ -3,9 +3,9 @@ module Main exposing (..)
 ratio =
     graphHeight
         / (if range == 0 then
-            0.1
+               0.1
            else
-            toFloat range
+               toFloat range
           )
 
 -- foo=(case x of {True->1;False->3})

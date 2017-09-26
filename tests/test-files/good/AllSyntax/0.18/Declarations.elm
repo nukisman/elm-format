@@ -23,15 +23,15 @@ type
       --D
     | --E
       Ctor2
-        --F
-        ()
+          --F
+          ()
       --G
     | --H
       Ctor3
-        --I
-        (List ())
-        --J
-        ()
+          --I
+          (List ())
+          --J
+          ()
 
 type DataTypeWithEolComments1
     = Ctor1 --A
