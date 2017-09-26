@@ -290,6 +290,7 @@ function checkValidationOutputFormat() {
 	echo "------------------------------"
 }
 
+mkdir "tests/test-files/tmp"
 
 echo
 echo

@@ -12,3 +12,4 @@ dist
 elm-format-short-*.tgz
 .vagrant
 package-lock.json
+/test/test-files/tmp
