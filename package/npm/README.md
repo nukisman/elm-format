@@ -1,10 +1,10 @@
 
-See [https://github.com/nukisman/elm-format-short](https://github.com/nukisman/elm-format-short)
+See [https://github.com/nukisman/elm-format-short/tree/elm-format-short](https://github.com/nukisman/elm-format-short/tree/elm-format-short)
 
 `elm-format-short` formats your code like `elm-format` but: 
-    * Without extra blank lines
-    * Without extra line breaks
-    * Without extra indents
+* Without extra blank lines
+* Without extra line breaks
+* Without extra indents
     
 `elm-format-short` formats [Elm](http://elm-lang.org) source code according to a standard set of rules in shorter way than `elm-format`.
 

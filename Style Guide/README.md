@@ -1,9 +1,9 @@
 # Introduction
 
 `elm-format-short` formats your code like `elm-format` but: 
-    * Without extra blank lines
-    * Without extra line breaks
-    * Without extra indents
+* Without extra blank lines
+* Without extra line breaks
+* Without extra indents
 
 The benefits of `elm-format-short` are same as of `elm-format`:
  - It makes code **easier to write**, because you never have to worry about minor formatting concerns while powering out new code.
