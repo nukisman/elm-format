@@ -37,10 +37,10 @@ viewEditor : Addresses a -> Doc -> FullscreenState -> Html
 viewEditor channels currentDoc fullscreen =
     div [ id "editor-container" ]
         [ div [ id "editor-frame" ]
-            [ viewEditorHeader channels currentDoc fullscreen
-            , viewOutline channels currentDoc fullscreen
-            , viewEditorFooter channels currentDoc fullscreen
-            ]
+              [ viewEditorHeader channels currentDoc fullscreen
+              , viewOutline channels currentDoc fullscreen
+              , viewEditorFooter channels currentDoc fullscreen
+              ]
         ]
 
 viewEditorHeader : Addresses a -> Doc -> FullscreenState -> Html
@@ -48,19 +48,19 @@ viewEditorHeader channels currentDoc fullscreen =
     div [ id "editor-header" ]
         [ div [ class "toolbar-section toolbar-button flaticon-zoom19" ] []
         , div [ class "toolbar-section" ]
-            [ viewFontControl channels.execCommand
-                "toggle-bold"
-                "B"
-                "bold"
-            , viewFontControl channels.execCommand
-                "toggle-italics"
-                "I"
-                "italic"
-            , viewFontControl channels.execCommand
-                "toggle-strikethrough"
-                " S "
-                "strikethrough"
-            ]
+              [ viewFontControl channels.execCommand
+                    "toggle-bold"
+                    "B"
+                    "bold"
+              , viewFontControl channels.execCommand
+                    "toggle-italics"
+                    "I"
+                    "italic"
+              , viewFontControl channels.execCommand
+                    "toggle-strikethrough"
+                    " S "
+                    "strikethrough"
+              ]
         , lazy2 viewFullscreenButton channels.fullscreen fullscreen
         ]
 
@@ -78,19 +78,19 @@ viewEditorFooter channels currentDoc fullscreen =
         wordCountLabel = pluralize "word" wordCount ++ " saved "
     in  div [ id "editor-footer" ]
             [ div [ id "doc-word-count" ]
-                [ text wordCountLabel
-                , WordGraph.viewWordGraph currentDoc.dailyWords
-                ]
+                  [ text wordCountLabel
+                  , WordGraph.viewWordGraph currentDoc.dailyWords
+                  ]
             , div [ id "dropbox-sync" ]
-                [ input
-                    [ id "toggle-dropbox-sync"
-                    , property "type" (string "checkbox")
-                    , onClick channels.remoteSync ()
-                    ]
-                    []
-                , label [ for "toggle-dropbox-sync" ]
-                    [ text " sync to Dropbox" ]
-                ]
+                  [ input
+                        [ id "toggle-dropbox-sync"
+                        , property "type" (string "checkbox")
+                        , onClick channels.remoteSync ()
+                        ]
+                        []
+                  , label [ for "toggle-dropbox-sync" ]
+                        [ text " sync to Dropbox" ]
+                  ]
             ]
 
 viewOutline : Addresses a -> Doc -> FullscreenState -> Html
@@ -102,7 +102,7 @@ viewOutline channels currentDoc fullscreen =
         outlineChapterNodes =
             List.concatMap (.id >> lazyViewChapter)
                 currentDoc.chapters
-    in div [ id "document-page" ]
+    in  div [ id "document-page" ]
             (outlineHeadingNodes ++ outlineChapterNodes)
 
 withCommas : Int -> String
@@ -117,7 +117,8 @@ withCommas num =
                     |> toString
                     |> String.right 3
         in  prefix ++ "," ++ suffix
-    else toString num
+    else
+        toString num
 
 pluralize : String -> Int -> String
 pluralize noun quantity =
@@ -131,14 +132,12 @@ viewFullscreenButton fullscreenChannel fullscreen =
     let { fullscreenClass, targetMode, fullscreenTitle } =
             case fullscreen of
                 True
-                 ->
-                    { fullscreenClass = "flaticon-collapsing"
+                 -> { fullscreenClass = "flaticon-collapsing"
                     , targetMode = False
                     , fullscreenTitle = "Leave Fullscreen Mode"
                     }
                 False
-                 ->
-                    { fullscreenClass = "flaticon-expand"
+                 -> { fullscreenClass = "flaticon-expand"
                     , targetMode = True
                     , fullscreenTitle = "Enter Fullscreen Mode"
                     }

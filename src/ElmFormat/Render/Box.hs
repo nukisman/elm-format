@@ -1149,31 +1149,12 @@ formatExpression elmVersion context aexpr =
                         inDefsNew =
                             case inDefs of
                                 (headBox:tailBoxes) ->
-                                    let -- todo: Use prefix ?
-                                        -- (Line, [Line])
-                                        (l, ls) = destructure headBox
-                                        newHead :: Box -- Two spaces
-                                        newHead =
-                                            let first :: Box
-                                                first = SingleLine $ row $ [inKey, space, space, l]
-                                            in  case ls of
-                                                [] ->
-                                                    first
-                                                (a:[]) ->
-                                                    stack1 [ first, SingleLine a]
-                                                (a:b:rest) ->
-                                                    stack1
-                                                        [ first
-                                                        , Stack
-                                                            (row [tabSpaces, a])
-                                                            (row [tabSpaces, b])
-                                                            (map (\l -> row [tabSpaces, l]) rest)
-                                                        ]
-
+                                    let newHead :: Box -- Two spaces
+                                        newHead = prefix (row [inKey, space, space]) headBox
                                         newTail :: [Box]
                                         newTail = tailBoxes |> map indent
                                     in (newHead:newTail)
-                                _ -> [] -- in SyntaxError
+                                -- _ -> [] -- in SyntaxError
                     in  stack1 inDefsNew
             in
                 stack1 [letBlock, inBlock]

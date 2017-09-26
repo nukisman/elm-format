@@ -334,7 +334,7 @@ checkGood 0.18 WorkaroundNegativeCasePatterns.elm
 
 checkGood 0.18 evancz/start-app/StartApp.elm
 checkGood 0.18 TheSeamau5/elm-check/Check.elm
-#checkGood 0.18 rtfeldman/dreamwriter/Editor.elm     # <--------
+checkGood 0.18 rtfeldman/dreamwriter/Editor.elm
 #checkGood 0.18 rtfeldman/dreamwriter/LeftSidebar.elm
 #checkGood 0.18 rtfeldman/dreamwriter/RightSidebar.elm
 #checkGood 0.18 rtfeldman/dreamwriter/WordGraph.elm
