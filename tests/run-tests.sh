@@ -336,17 +336,17 @@ checkGood 0.18 WorkaroundNegativeCasePatterns.elm
 checkGood 0.18 evancz/start-app/StartApp.elm
 checkGood 0.18 TheSeamau5/elm-check/Check.elm
 checkGood 0.18 rtfeldman/dreamwriter/Editor.elm
-#checkGood 0.18 rtfeldman/dreamwriter/LeftSidebar.elm
-#checkGood 0.18 rtfeldman/dreamwriter/RightSidebar.elm
-#checkGood 0.18 rtfeldman/dreamwriter/WordGraph.elm
-#checkGood 0.18 avh4/elm-fifo/Fifo.elm
+checkGood 0.18 rtfeldman/dreamwriter/LeftSidebar.elm
+checkGood 0.18 rtfeldman/dreamwriter/RightSidebar.elm
+checkGood 0.18 rtfeldman/dreamwriter/WordGraph.elm
+checkGood 0.18 avh4/elm-fifo/Fifo.elm
 
-#checkGood 0.17 elm-lang/examples/random.elm
-#checkGood 0.17 elm-lang/examples/http.elm
-#checkGood 0.17 elm-lang/examples/time.elm
-#checkGood 0.17 elm-lang/examples/websockets.elm
-#checkGood 0.17 elm-lang/examples/Spelling.elm
-#checkGood 0.17 elm-lang/websocket/WebSocket.elm
+checkGood 0.17 elm-lang/examples/random.elm
+checkGood 0.17 elm-lang/examples/http.elm
+checkGood 0.17 elm-lang/examples/time.elm
+checkGood 0.17 elm-lang/examples/websockets.elm
+checkGood 0.17 elm-lang/websocket/WebSocket.elm
+checkGood 0.17 elm-lang/examples/Spelling.elm
 #
 #checkBad Empty.elm
 #checkBad UnexpectedComma.elm

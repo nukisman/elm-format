@@ -19,12 +19,10 @@ module Fifo exposing (Fifo, empty, fromList, insert, remove, toList)
 
 -}
 
-
 {-| A FIFO containing items of type `a`.
 -}
 type Fifo a
     = Fifo (List a) (List a)
-
 
 {-| Creates an empty Fifo.
 
@@ -33,9 +31,7 @@ type Fifo a
 
 -}
 empty : Fifo a
-empty =
-    Fifo [] []
-
+empty = Fifo [] []
 
 {-| Inserts an item into a Fifo
 
@@ -46,9 +42,7 @@ empty =
 
 -}
 insert : a -> Fifo a -> Fifo a
-insert a (Fifo front back) =
-    Fifo front (a :: back)
-
+insert a (Fifo front back) = Fifo front (a :: back)
 
 {-| Removes the next (oldest) item from a Fifo, returning the item (if any), and the updated Fifo.
 
@@ -60,15 +54,12 @@ insert a (Fifo front back) =
 remove : Fifo a -> ( Maybe a, Fifo a )
 remove fifo =
     case fifo of
-        Fifo [] [] ->
-            ( Nothing, empty )
-
-        Fifo [] back ->
-            remove <| Fifo (List.reverse back) []
-
-        Fifo (next :: rest) back ->
-            ( Just next, Fifo rest back )
-
+        Fifo [] []
+         -> ( Nothing, empty )
+        Fifo [] back
+         -> remove <| Fifo (List.reverse back) []
+        Fifo (next :: rest) back
+         -> ( Just next, Fifo rest back )
 
 {-| Creates a Fifo from a List.
 
@@ -79,9 +70,7 @@ remove fifo =
 
 -}
 fromList : List a -> Fifo a
-fromList list =
-    Fifo list []
-
+fromList list = Fifo list []
 
 {-| Converts a Fifo to a List.
 
@@ -93,5 +82,4 @@ fromList list =
 
 -}
 toList : Fifo a -> List a
-toList (Fifo front back) =
-    front ++ List.reverse back
+toList (Fifo front back) = front ++ List.reverse back
