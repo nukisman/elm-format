@@ -1,7 +1,25 @@
-## 0.8.3
+## 0.8.5
+
+Features:
+  - Better body indents for `case-of`
+  - Fixed size indents for multiline items of list, tuples and records
+Bug fixes:
+  - Multiline body indents for `case-of`
+
+## 0.8.4
 
 Fork `elm-format-short` from `elm-format`
-TODO: Format changes
+
+Features:
+  - Not empty first line for `let` body and `in` body (with indents for `in` multiline body)
+  - No more needless blank lines between definitions in `let` body
+  - No more needless blank lines around comments in `let` body
+  - Single line definitions take just 1 line 
+  - No extra indents for multiline body of `module exposing`
+
+    
+- - -   
+
 
 ## master (0.7.1-beta)
 
