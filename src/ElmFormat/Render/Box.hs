@@ -1110,30 +1110,7 @@ formatExpression elmVersion context aexpr =
                         letDefs = defs |> intersperseMap spacer formatDefinition'
 
                         letDefsNew :: [Box]
-                        letDefsNew =
-                            case letDefs of
-                                (headBox:tailBoxes) ->
-                                    let -- todo: Use prefix ?
-                                        -- (Line, [Line])
-                                        (l, ls) = destructure headBox
-
-                                        newHead :: Box -- One space
-                                        newHead =
-                                            case (l, ls) of
-                                                (l, []) ->
-                                                    line $ row [letKey, space, l]
-                                                (l, (h:rest)) ->
-                                                    stack1
-                                                        ( [ line $ row [letKey, space, l] ]
-                                                          ++ ( (line h : map line rest)
-                                                               |> map indent
-                                                             )
-                                                        )
-
-                                        newTail :: [Box]
-                                        newTail = tailBoxes |> map indent
-                                    in (newHead:newTail)
-                                _ -> [] -- let SyntaxError
+                        letDefsNew = [prefix (row [letKey, space]) (stack1 letDefs)]
                     in  stack1 letDefsNew
 
                 inBlock :: Box
@@ -1179,7 +1156,7 @@ formatExpression elmVersion context aexpr =
                       (_, subject') ->
                           stack1
                               [ line $ keyword "case"
-                              , indentWith semiTabSpaces subject'
+                              , indent subject'
                               , line $ keyword "of"
                               ]
 
@@ -1195,23 +1172,24 @@ formatExpression elmVersion context aexpr =
                     of
                         (_, _, SingleLine pat', body') ->
                             stack1
-                                [ line pat'
-                                , prefix (row [ space, keyword "->", space]) body'
+                                [ line $ row [pat', space, keyword "->"]
+                                , indent body'
                                 ]
                         (Commented pre _ [], SingleLine pat', _, body') ->
                             stack1 $
                                 (map formatComment pre)
-                                ++ [ line pat'
-                                   , prefix (row [ space, keyword "->", space]) body'
+                                ++ [ line $ row [pat', space, keyword "->"]
+                                   , indent body'
                                    ]
                         (_, _, pat', body') ->
                             stack1 $
                               [ pat'
-                              , prefix (row [ space, keyword "->", space]) body'
+                              , line $ row [ space, keyword "->"]
+                              , indent body'
                               ]
             in
                 opening
-                    |> andThen (clauses |> map clause |> map (indentWith semiTabSpaces))
+                    |> andThen (clauses |> map clause |> map indent)
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
         AST.Expression.Tuple exprs multiline ->
