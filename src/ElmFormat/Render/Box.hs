@@ -297,13 +297,7 @@ formatModuleLine elmVersion header =
         |> Maybe.fromMaybe []
 
     exposingClause =
-        case AST.Module.exports header of
-            (KeywordCommented [] [] value) ->
-                [ line $ keyword "exposing"
-                , exports value |> indent ]
---            (KeywordCommented pre [] value) ->  -- todo: Using map formatComment comments
-            (KeywordCommented pre post value) ->
-                [ formatKeywordCommented "exposing" exports (AST.Module.exports header) ]
+      formatKeywordCommented "exposing" exports $ AST.Module.exports header
 
     nameClause = -- todo: contain trailing "exposing -- dsdsd" or "where -- dsdsd"
       case
@@ -326,7 +320,7 @@ formatModuleLine elmVersion header =
   in
     ElmStructure.spaceSepOrIndented
       nameClause
-      (whereClause ++ exposingClause)
+      (whereClause ++ [exposingClause])
 
 
 formatModule :: ElmVersion -> AST.Module.Module -> Box
