@@ -744,7 +744,7 @@ formatDeclaration elmVersion decl =
                     (formatCommented' typeComments (formatType elmVersion) typ)
 
                 AST.Declaration.PortDefinition name bodyComments expr ->
-                  ElmStructure.definition "=" True
+                  ElmStructure.definition "=" False
                     (line $ keyword "port")
                     [formatCommented (line . formatLowercaseIdentifier elmVersion []) name]
                     (formatCommented' bodyComments (formatExpression elmVersion SyntaxSeparated) expr)
