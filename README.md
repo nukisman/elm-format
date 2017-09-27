@@ -47,6 +47,20 @@ elm-format-short --help  # See other command line options
 
 `npm i -g elm-format-short`
 
+## JetBrains Integration
+
+This is for WebStorm and other JetBrains IDEs.
+
+1. Install `elm-format-short`
+1. Install the [Elm Language Plugin](https://durkiewicz.github.io/elm-plugin/) package.
+1. Install the File Watchers plugin (available in the plugin repository)
+1. Add a file watcher for .elm files with the settings as [shown here](img/JetBrains%20setup.png).
+1. Set tab/indent size to 2 spaces as [shown here](img/JetBrains%20setup%20tabsize.png)
+ 
+---
+
+--- 
+
 # TODO: Update this document for elm-format-short
 
 ### Experimental version

@@ -1,3 +1,11 @@
+## 0.9.0
+
+Features:
+  - Short (2 spaces) tab/indent for all use cases except `let-in`
+  - Module `exposing` body (short) indent 
+  - Single line type aliases
+  - Single line port definition 
+
 ## 0.8.5
 
 Features:

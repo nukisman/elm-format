@@ -26,3 +26,14 @@ Plus benefits in contrast to `elm-format`:
 ## Installation (currently Mac and Linux only) 
 
 `npm i -g elm-format-short`  
+
+## JetBrains Integration
+
+This is for WebStorm and other JetBrains IDEs.
+
+1. Install `elm-format-short`
+1. Install the [Elm Language Plugin](https://durkiewicz.github.io/elm-plugin/) package.
+1. Install the File Watchers plugin (available in the plugin repository)
+1. Add a file watcher for .elm files with the settings as [shown here](https://github.com/nukisman/elm-format-short/blob/master/img/JetBrains%20setup.png).
+1. Set tab/indent size to 2 spaces as [shown here](https://github.com/nukisman/elm-format-short/blob/master/img/JetBrains%20setup%20tabsize.png)
+ 
