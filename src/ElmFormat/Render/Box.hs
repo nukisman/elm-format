@@ -1117,15 +1117,7 @@ formatExpression elmVersion context aexpr =
                              ++ [formatExpression elmVersion SyntaxSeparated expr]
 
                         inDefsNew :: [Box]
-                        inDefsNew =
-                            case inDefs of
-                                (headBox:tailBoxes) ->
-                                    let newHead :: Box -- Two spaces
-                                        newHead = prefix (row [inKey, space, space]) headBox
-                                        newTail :: [Box]
-                                        newTail = tailBoxes |> map indent
-                                    in (newHead:newTail)
-                                -- _ -> [] -- in SyntaxError
+                        inDefsNew = [prefix (row [inKey, space, space]) (stack1 inDefs)]
                     in  stack1 inDefsNew
             in
                 stack1 [letBlock, inBlock]
