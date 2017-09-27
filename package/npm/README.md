@@ -1,5 +1,5 @@
 
-See [https://github.com/nukisman/elm-format-short/tree/elm-format-short](https://github.com/nukisman/elm-format-short/tree/elm-format-short)
+See [https://github.com/nukisman/elm-format-short](https://github.com/nukisman/elm-format-short)
 
 `elm-format-short` formats your code like `elm-format` but: 
 * Without extra blank lines
@@ -15,9 +15,14 @@ The benefits of `elm-format-short` are same as of `elm-format`:
  - It **saves your team time** debating how to format things, because there is a standard tool that formats everything the same way.
  - It **saves you time** because you don't have to nitpick over formatting details of your code.
 
-plus benefits in contrast to `elm-format`:
+Plus benefits in contrast to `elm-format`:
  - It makes code **easier to read**, because you can see more code without scrolling.
  - It makes code **easier to navigate**, because you have not to scroll needless empty space by mouse or arrows on keyboard.
  - It makes code **easier to write**, because it is **easier to read** and **easier to navigate**.
  - It makes code **easier to debug**, because your lines of code commented out for debug purposes are not surrounded by needless blank lines above and below.
- - It **saves your money** because you can still use your display. It not require you to buy new display with vertical resolution of 1000000000 pixels to see tons of blank lines. 
+ - It **saves your money** because you can still use your display. It not require you to buy new display with vertical resolution of 1000000000 pixels to see tons of blank lines.
+  
+
+## Installation (currently Mac and Linux only) 
+
+`npm i -g elm-format-short`  

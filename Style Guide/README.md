@@ -12,7 +12,7 @@ The benefits of `elm-format-short` are same as of `elm-format`:
  - It **saves your team time** debating how to format things, because there is a standard tool that formats everything the same way.
  - It **saves you time** because you don't have to nitpick over formatting details of your code.
 
-plus benefits in contrast to `elm-format`:
+Plus benefits in contrast to `elm-format`:
  - It makes code **easier to read**, because you can see more code without scrolling.
  - It makes code **easier to navigate**, because you have not to scroll needless empty space by mouse or arrows on keyboard.
  - It makes code **easier to write**, because it is **easier to read** and **easier to navigate**.
@@ -22,8 +22,8 @@ plus benefits in contrast to `elm-format`:
 ## Constraints
 
   - Formatting Elm code should not require any information outside of the code being formatted.  This implies:
-      - the same code always formats in the same way (with a given version of `elm-format`) (**easier to read**)
+      - the same code always formats in the same way (with a given version of `elm-format-short`) (**easier to read**)
       - formatting is fast because it doesn't need to do any file I/O
-      - no configuration is required to help `elm-format` find other , since no other files are needed (**easier to maintain**)
+      - no configuration is required to help `elm-format-short` find other , since no other files are needed (**easier to maintain**)
   - Limit formatting choices where possible.  This helps **save you time**.
   - Avoid configuration options.  This **saves your team time**, **saves you time**, and makes code **easier to read**.
