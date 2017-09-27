@@ -1,4 +1,4 @@
-{- AD TODO: extra blank line -}
+{- AD TODO: avoid extra blank line -}
 
 
 module {- A -} AllSyntax.BlockComments.Module {- B -} {- I -} exposing ({- C -} a {- D -}, {- E -} b {- F -}, {- G -} c {- H -})
@@ -10,23 +10,23 @@ import {- M -} Maybe {- N -} exposing {- O -} ({- S -} Maybe {- W -} ({- X -} Ju
 import Signal exposing ({- AB -} .. {- AC -})
 import {- L -} String
 import Task
-    exposing
-        ( andMap
-        , andThen
-        , fail {- AE -}
-        , fromMaybe
-        , fromResult
-        , map
-        , map2
-        , map3
-        , map4
-        , map5
-        , mapError
-        , onError
-        , succeed {- AD -}
-        , toMaybe
-        , toResult
-        )
+  exposing
+    ( andMap
+    , andThen
+    , fail {- AE -}
+    , fromMaybe
+    , fromResult
+    , map
+    , map2
+    , map3
+    , map4
+    , map5
+    , mapError
+    , onError
+    , succeed {- AD -}
+    , toMaybe
+    , toResult
+    )
 
 {- AF -}
 

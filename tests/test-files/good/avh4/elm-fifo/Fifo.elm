@@ -22,7 +22,7 @@ module Fifo exposing (Fifo, empty, fromList, insert, remove, toList)
 {-| A FIFO containing items of type `a`.
 -}
 type Fifo a
-    = Fifo (List a) (List a)
+  = Fifo (List a) (List a)
 
 {-| Creates an empty Fifo.
 
@@ -53,13 +53,13 @@ insert a (Fifo front back) = Fifo front (a :: back)
 -}
 remove : Fifo a -> ( Maybe a, Fifo a )
 remove fifo =
-    case fifo of
-        Fifo [] []
-         -> ( Nothing, empty )
-        Fifo [] back
-         -> remove <| Fifo (List.reverse back) []
-        Fifo (next :: rest) back
-         -> ( Just next, Fifo rest back )
+  case fifo of
+    Fifo [] [] ->
+      ( Nothing, empty )
+    Fifo [] back ->
+      remove <| Fifo (List.reverse back) []
+    Fifo (next :: rest) back ->
+      ( Just next, Fifo rest back )
 
 {-| Creates a Fifo from a List.
 

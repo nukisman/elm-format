@@ -1,10 +1,10 @@
 module AllSyntax.OldKeywords exposing (..)
 
 type alias OldKeywords =
-    { foreign : Int
-    , hiding : Bool
-    , deriving : String
-    }
+  { foreign : Int
+  , hiding : Bool
+  , deriving : String
+  }
 
 foreign : Float
 foreign = 0

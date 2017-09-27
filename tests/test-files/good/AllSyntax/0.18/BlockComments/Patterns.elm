@@ -1,7 +1,7 @@
 module AllSyntax.BlockComments.Patterns exposing (..)
 
 type Foo
-    = Foo () ()
+  = Foo () ()
 
 wildcard _ = ()
 
