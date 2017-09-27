@@ -730,7 +730,7 @@ formatDeclaration elmVersion decl =
                                     ]
 
                 AST.Declaration.TypeAlias preAlias nameWithArgs typ ->
-                  ElmStructure.definition "=" True
+                  ElmStructure.definition "=" False
                     (line $ keyword "type")
                     [ formatHeadCommented (line . keyword) (preAlias, "alias")
                     , formatCommented (formatNameWithArgs elmVersion) nameWithArgs
