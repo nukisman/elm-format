@@ -1179,7 +1179,7 @@ formatExpression elmVersion context aexpr =
                       (_, subject') ->
                           stack1
                               [ line $ keyword "case"
-                              , indent subject'
+                              , indentWith semiTabSpaces subject'
                               , line $ keyword "of"
                               ]
 
@@ -1211,7 +1211,7 @@ formatExpression elmVersion context aexpr =
                               ]
             in
                 opening
-                    |> andThen (clauses |> map clause |> map indent)
+                    |> andThen (clauses |> map clause |> map (indentWith semiTabSpaces))
                     |> expressionParens AmbiguousEnd context -- TODO: not tested
 
         AST.Expression.Tuple exprs multiline ->

@@ -3,9 +3,9 @@ module Box
   ( Line, identifier, keyword, punc, literal, row, space, tab
   , Box(SingleLine, MustBreak, Stack), blankLine, line, mustBreak, stack', stack1, andThen
   , isLine, allSingles, lineLength
-  , indent, prefix, addSuffix
+  , indent, indentWith, prefix, addSuffix
   , render
-  , destructure, tabSpaces
+  , destructure, tabSpaces, semiTabSpaces
   ) where
 
 import Elm.Utils ((|>))
@@ -147,8 +147,15 @@ indent :: Box -> Box
 indent =
     mapLines (\l -> row [tabSpaces, l])
 
+indentWith :: Line -> Box -> Box
+indentWith ind =
+    mapLines (\l -> row [ind, l])
+
 tabSpaces :: Line
 tabSpaces = row $ replicate spacesInTab space
+
+semiTabSpaces :: Line
+semiTabSpaces = row $ replicate spacesInSemiTab space
 
 isLine :: Box -> Either Box Line
 isLine b =
@@ -255,6 +262,9 @@ spacesInTab :: Int
 spacesInTab =
   4
 
+spacesInSemiTab :: Int
+spacesInSemiTab =
+  spacesInTab `quot` 2
 
 spacesToNextTab :: Int -> Int
 spacesToNextTab startColumn =
