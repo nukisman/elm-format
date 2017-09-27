@@ -31,22 +31,22 @@ view : Addresses a -> Model -> Html
 view addresses model =
   let { sidebarBody, sidebarFooter } =
         case model.currentNote of
-          Nothing ->
-            { sidebarBody =
-                lazy2 viewNoteListings
-                  addresses.openNoteId
-                  model.notes
-            , sidebarFooter =
-                span [] []
-            }
-          Just currentNote ->
-            { sidebarBody =
-                lazy viewCurrentNoteBody currentNote
-            , sidebarFooter =
-                lazy2 viewCurrentNoteFooter
-                  addresses
-                  currentNote
-            }
+          Nothing
+           -> { sidebarBody =
+                  lazy2 viewNoteListings
+                    addresses.openNoteId
+                    model.notes
+              , sidebarFooter =
+                  span [] []
+              }
+          Just currentNote
+           -> { sidebarBody =
+                  lazy viewCurrentNoteBody currentNote
+              , sidebarFooter =
+                  lazy2 viewCurrentNoteFooter
+                    addresses
+                    currentNote
+              }
   in  div [ id "right-sidebar-container", class "sidebar" ]
         [ div [ id "right-sidebar-body", class "sidebar-body" ]
             [ sidebarBody ]

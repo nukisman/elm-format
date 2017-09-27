@@ -54,12 +54,12 @@ insert a (Fifo front back) = Fifo front (a :: back)
 remove : Fifo a -> ( Maybe a, Fifo a )
 remove fifo =
   case fifo of
-    Fifo [] [] ->
-      ( Nothing, empty )
-    Fifo [] back ->
-      remove <| Fifo (List.reverse back) []
-    Fifo (next :: rest) back ->
-      ( Just next, Fifo rest back )
+    Fifo [] []
+     -> ( Nothing, empty )
+    Fifo [] back
+     -> remove <| Fifo (List.reverse back) []
+    Fifo (next :: rest) back
+     -> ( Just next, Fifo rest back )
 
 {-| Creates a Fifo from a List.
 

@@ -51,15 +51,15 @@ type Update
 transition : Update -> Model -> Model
 transition update model =
   case update of
-    NoOp ->
-      model
-    SetViewMode mode ->
-      { model | viewMode = mode }
-    OpenDocId id ->
-      { model
-      | currentDocId = Just id
-      , viewMode = CurrentDocMode
-      }
+    NoOp
+     -> model
+    SetViewMode mode
+     -> { model | viewMode = mode }
+    OpenDocId id
+     -> { model
+        | currentDocId = Just id
+        , viewMode = CurrentDocMode
+        }
 
 {-| Replace illegal filename characters with underscores
 -}
@@ -75,46 +75,46 @@ view addresses model =
   let openDoc = Signal.forwardTo addresses.update OpenDocId
       { sidebarHeader, sidebarBody, sidebarFooter } =
         case model.viewMode of
-          OpenMenuMode ->
-            { sidebarHeader =
-                lazy viewOpenMenuHeader
-                  addresses.update
-            , sidebarBody =
-                lazy2 (OpenMenu.view addresses.openFromFile openDoc)
-                  model.docs
-                  model.currentDoc
-            , sidebarFooter =
-                viewOpenMenuFooter
-            }
-          CurrentDocMode ->
-            { sidebarHeader =
-                lazy2 viewCurrentDocHeader
-                  model.currentDoc
-                  addresses
-            , sidebarBody =
-                lazy3 CurrentDoc.view
-                  addresses.navigateToTitle
-                  addresses.navigateToChapterId
-                  model.currentDoc
-            , sidebarFooter =
-                lazy viewCurrentDocFooter
-                  addresses
-            }
-          SettingsMode ->
-            -- TODO make this different than CurrentDocMode
-            { sidebarHeader =
-                lazy2 viewCurrentDocHeader
-                  model.currentDoc
-                  addresses
-            , sidebarBody =
-                lazy3 CurrentDoc.view
-                  addresses.navigateToTitle
-                  addresses.navigateToChapterId
-                  model.currentDoc
-            , sidebarFooter =
-                lazy viewCurrentDocFooter
-                  addresses
-            }
+          OpenMenuMode
+           -> { sidebarHeader =
+                  lazy viewOpenMenuHeader
+                    addresses.update
+              , sidebarBody =
+                  lazy2 (OpenMenu.view addresses.openFromFile openDoc)
+                    model.docs
+                    model.currentDoc
+              , sidebarFooter =
+                  viewOpenMenuFooter
+              }
+          CurrentDocMode
+           -> { sidebarHeader =
+                  lazy2 viewCurrentDocHeader
+                    model.currentDoc
+                    addresses
+              , sidebarBody =
+                  lazy3 CurrentDoc.view
+                    addresses.navigateToTitle
+                    addresses.navigateToChapterId
+                    model.currentDoc
+              , sidebarFooter =
+                  lazy viewCurrentDocFooter
+                    addresses
+              }
+          SettingsMode
+           -> -- TODO make this different than CurrentDocMode
+              { sidebarHeader =
+                  lazy2 viewCurrentDocHeader
+                    model.currentDoc
+                    addresses
+              , sidebarBody =
+                  lazy3 CurrentDoc.view
+                    addresses.navigateToTitle
+                    addresses.navigateToChapterId
+                    model.currentDoc
+              , sidebarFooter =
+                  lazy viewCurrentDocFooter
+                    addresses
+              }
   in  div [ id "left-sidebar-container", class "sidebar" ]
         [ sidebarHeader
         , div [ id "left-sidebar-body", class "sidebar-body" ]

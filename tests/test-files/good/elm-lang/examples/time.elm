@@ -29,8 +29,8 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
   case action of
-    Tick newTime ->
-      ( newTime, Cmd.none )
+    Tick newTime
+     -> ( newTime, Cmd.none )
 
 -- SUBSCRIPTIONS
 

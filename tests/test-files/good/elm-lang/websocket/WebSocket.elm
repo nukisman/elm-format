@@ -93,10 +93,10 @@ keepAlive url = subscription (KeepAlive url)
 subMap : (a -> b) -> MySub a -> MySub b
 subMap func sub =
   case sub of
-    Listen url tagger ->
-      Listen url (tagger >> func)
-    KeepAlive url ->
-      KeepAlive url
+    Listen url tagger
+     -> Listen url (tagger >> func)
+    KeepAlive url
+     -> KeepAlive url
 
 -- MANAGER
 
@@ -160,33 +160,33 @@ onEffects router cmds subs state =
 sendMessagesHelp : List (MyCmd msg) -> SocketsDict -> QueuesDict -> Task x QueuesDict
 sendMessagesHelp cmds socketsDict queuesDict =
   case cmds of
-    [] ->
-      Task.succeed queuesDict
-    (Send name msg) :: rest ->
-      case Dict.get name socketsDict of
-        Just (Connected socket) ->
-          WS.send socket msg
-            &> sendMessagesHelp rest socketsDict queuesDict
-        _ ->
-          sendMessagesHelp rest socketsDict (Dict.update name (add msg) queuesDict)
+    []
+     -> Task.succeed queuesDict
+    (Send name msg) :: rest
+     -> case Dict.get name socketsDict of
+          Just (Connected socket)
+           -> WS.send socket msg
+                &> sendMessagesHelp rest socketsDict queuesDict
+          _
+           -> sendMessagesHelp rest socketsDict (Dict.update name (add msg) queuesDict)
 
 buildSubDict : List (MySub msg) -> SubsDict msg -> SubsDict msg
 buildSubDict subs dict =
   case subs of
-    [] ->
-      dict
-    (Listen name tagger) :: rest ->
-      buildSubDict rest (Dict.update name (add tagger) dict)
-    (KeepAlive name) :: rest ->
-      buildSubDict rest (Dict.update name (Just << Maybe.withDefault []) dict)
+    []
+     -> dict
+    (Listen name tagger) :: rest
+     -> buildSubDict rest (Dict.update name (add tagger) dict)
+    (KeepAlive name) :: rest
+     -> buildSubDict rest (Dict.update name (Just << Maybe.withDefault []) dict)
 
 add : a -> Maybe (List a) -> Maybe (List a)
 add value maybeList =
   case maybeList of
-    Nothing ->
-      Just [ value ]
-    Just list ->
-      Just (value :: list)
+    Nothing
+     -> Just [ value ]
+    Just list
+     -> Just (value :: list)
 
 -- HANDLE SELF MESSAGES
 
@@ -199,36 +199,36 @@ type Msg
 onSelfMsg : Platform.Router msg Msg -> Msg -> State msg -> Task Never (State msg)
 onSelfMsg router selfMsg state =
   case selfMsg of
-    Receive name str ->
-      let sends =
-            Dict.get name state.subs
-              |> Maybe.withDefault []
-              |> List.map (\tagger -> Platform.sendToApp router (tagger str))
-      in  Task.sequence sends &> Task.succeed state
-    Die name ->
-      case Dict.get name state.sockets of
-        Nothing ->
-          Task.succeed state
-        Just _ ->
-          attemptOpen router 0 name
-            `Task.andThen`
-              (\pid ->
-                 Task.succeed (updateSocket name (Opening 0 pid) state)
-              )
-    GoodOpen name socket ->
-      Task.succeed (updateSocket name (Connected socket) state)
-    BadOpen name ->
-      case Dict.get name state.sockets of
-        Nothing ->
-          Task.succeed state
-        Just (Opening n _) ->
-          attemptOpen router (n + 1) name
-            `Task.andThen`
-              (\pid ->
-                 Task.succeed (updateSocket name (Opening (n + 1) pid) state)
-              )
-        Just (Connected _) ->
-          Task.succeed state
+    Receive name str
+     -> let sends =
+              Dict.get name state.subs
+                |> Maybe.withDefault []
+                |> List.map (\tagger -> Platform.sendToApp router (tagger str))
+        in  Task.sequence sends &> Task.succeed state
+    Die name
+     -> case Dict.get name state.sockets of
+          Nothing
+           -> Task.succeed state
+          Just _
+           -> attemptOpen router 0 name
+                `Task.andThen`
+                  (\pid ->
+                     Task.succeed (updateSocket name (Opening 0 pid) state)
+                  )
+    GoodOpen name socket
+     -> Task.succeed (updateSocket name (Connected socket) state)
+    BadOpen name
+     -> case Dict.get name state.sockets of
+          Nothing
+           -> Task.succeed state
+          Just (Opening n _)
+           -> attemptOpen router (n + 1) name
+                `Task.andThen`
+                  (\pid ->
+                     Task.succeed (updateSocket name (Opening (n + 1) pid) state)
+                  )
+          Just (Connected _)
+           -> Task.succeed state
 
 updateSocket : String -> Connection -> State msg -> State msg
 updateSocket name connection state = { state | sockets = Dict.insert name connection state.sockets }
@@ -263,7 +263,7 @@ after backoff =
 closeConnection : Connection -> Task x ()
 closeConnection connection =
   case connection of
-    Opening _ pid ->
-      Process.kill pid
-    Connected socket ->
-      WS.close socket
+    Opening _ pid
+     -> Process.kill pid
+    Connected socket
+     -> WS.close socket

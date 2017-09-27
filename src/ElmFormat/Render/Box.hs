@@ -1158,20 +1158,19 @@ formatExpression elmVersion context aexpr =
                     of
                         (_, _, SingleLine pat', body') ->
                             stack1
-                                [ line $ row [pat', space, keyword "->"]
-                                , indent body'
+                                [ line pat'
+                                , prefix (row [ space, keyword "->", space]) body'
                                 ]
                         (Commented pre _ [], SingleLine pat', _, body') ->
                             stack1 $
                                 (map formatComment pre)
-                                ++ [ line $ row [pat', space, keyword "->"]
-                                   , indent body'
+                                ++ [ line pat'
+                                   , prefix (row [ space, keyword "->", space]) body'
                                    ]
                         (_, _, pat', body') ->
                             stack1 $
                               [ pat'
-                              , line $ row [ space, keyword "->"]
-                              , indent body'
+                              , prefix (row [ space, keyword "->", space]) body'
                               ]
             in
                 opening

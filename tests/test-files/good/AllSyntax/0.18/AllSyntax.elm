@@ -272,12 +272,12 @@ ifStatement b =
 
 caseStatement mb =
   case mb of
-    Just True ->
-      "+"
-    Just _ ->
-      "_"
-    Nothing ->
-      "."
+    Just True
+     -> "+"
+    Just _
+     -> "_"
+    Nothing
+     -> "."
 
 multilineExpressionsInsideList =
   [ let x = 1
@@ -289,12 +289,12 @@ multilineExpressionsInsideList =
     else
       always 4
   , case True of
-      _ ->
-        always 5
+      _
+       -> always 5
   , ( 123
     , case True of
-        _ ->
-          always 5
+        _
+         -> always 5
     )
   , [ 6
     , 7
@@ -316,8 +316,8 @@ multilineExpressionsInsideTuple a foo =
     else
       4
   , case True of
-      _ ->
-        5
+      _
+       -> 5
   , [ 6
     , 7
     ]
@@ -352,8 +352,8 @@ multilineExpressionsInsideRecord =
         4
   , c =
       case True of
-        _ ->
-          5
+        _
+         -> 5
   , d =
       [ 6
       , 7
@@ -391,8 +391,8 @@ multilineCaseSubject a =
     else
       "Y"
   of
-    _ ->
-      ()
+    _
+     -> ()
 
 singleLineRange = [{ f1 = 6 }.f1..(9 + 6 |> (-) 2) + 2]
 

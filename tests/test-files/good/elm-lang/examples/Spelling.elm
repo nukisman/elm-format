@@ -36,12 +36,12 @@ port check : String -> Cmd msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
   case action of
-    Change newWord ->
-      ( Model newWord [], Cmd.none )
-    Check ->
-      ( model, check model.word )
-    Suggest newSuggestions ->
-      ( Model model.word newSuggestions, Cmd.none )
+    Change newWord
+     -> ( Model newWord [], Cmd.none )
+    Check
+     -> ( model, check model.word )
+    Suggest newSuggestions
+     -> ( Model model.word newSuggestions, Cmd.none )
 
 -- SUBSCRIPTIONS
 

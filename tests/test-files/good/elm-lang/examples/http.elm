@@ -39,12 +39,12 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
   case action of
-    MorePlease ->
-      ( model, getRandomGif model.topic )
-    FetchSucceed newUrl ->
-      ( Model model.topic newUrl, Cmd.none )
-    FetchFail _ ->
-      ( model, Cmd.none )
+    MorePlease
+     -> ( model, getRandomGif model.topic )
+    FetchSucceed newUrl
+     -> ( Model model.topic newUrl, Cmd.none )
+    FetchFail _
+     -> ( model, Cmd.none )
 
 -- VIEW
 

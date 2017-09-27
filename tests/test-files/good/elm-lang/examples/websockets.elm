@@ -37,12 +37,12 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg { input, messages } =
   case msg of
-    Input newInput ->
-      ( Model newInput messages, Cmd.none )
-    Send ->
-      ( Model "" messages, WebSocket.send echoServer input )
-    NewMessage str ->
-      ( Model input (str :: messages), Cmd.none )
+    Input newInput
+     -> ( Model newInput messages, Cmd.none )
+    Send
+     -> ( Model "" messages, WebSocket.send echoServer input )
+    NewMessage str
+     -> ( Model input (str :: messages), Cmd.none )
 
 -- SUBSCRIPTIONS
 
