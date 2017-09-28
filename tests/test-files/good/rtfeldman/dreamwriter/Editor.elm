@@ -107,25 +107,23 @@ viewOutline channels currentDoc fullscreen =
 
 withCommas : Int -> String
 withCommas num =
-  if num >= 1000 then
-    let prefix =
-          (num / 1000)
-            |> floor
-            |> withCommas
-        suffix =
-          num
-            |> toString
-            |> String.right 3
-    in  prefix ++ "," ++ suffix
-  else
-    toString num
+  if num >= 1000
+  then let prefix =
+             (num / 1000)
+               |> floor
+               |> withCommas
+           suffix =
+             num
+               |> toString
+               |> String.right 3
+       in  prefix ++ "," ++ suffix
+  else toString num
 
 pluralize : String -> Int -> String
 pluralize noun quantity =
-  if quantity == 1 then
-    "1 " ++ noun
-  else
-    withCommas quantity ++ " " ++ noun ++ "s"
+  if quantity == 1
+  then "1 " ++ noun
+  else withCommas quantity ++ " " ++ noun ++ "s"
 
 viewFullscreenButton : Address FullscreenState -> FullscreenState -> Html
 viewFullscreenButton fullscreenChannel fullscreen =

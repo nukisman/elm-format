@@ -28,10 +28,9 @@ bar day yOffset =
     [ x <| toString <| day.xOffset * (barWidth + barMargin)
     , y <|
         toString <|
-          if day.amount <= 0 then
-            yOffset
-          else
-            yOffset - day.amount
+          if day.amount <= 0
+          then yOffset
+          else yOffset - day.amount
     , height <| toString <| abs day.amount
     , width <| toString barWidth
     ]
@@ -70,10 +69,9 @@ scale top bot value =
   let range = top - bot
       ratio =
         graphHeight
-          / (if range == 0 then
-               0.1
-             else
-               toFloat range
+          / (if range == 0
+             then 0.1
+             else toFloat range
             )
   in  ratio * toFloat value
 
@@ -89,10 +87,9 @@ viewWordGraph list =
           |> List.minimum
           |> Maybe.withDefault 0
           |> (\x ->
-                if x > 0 then
-                  0
-                else
-                  x
+                if x > 0
+                then 0
+                else x
              )
       yOffset = scale max min max
       days =

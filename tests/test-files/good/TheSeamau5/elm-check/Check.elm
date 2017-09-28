@@ -245,35 +245,33 @@ claim name actualStatement expectedStatement investigator =
           --
           -- originalCounterExample' : Seed -> Int -> Trampoline (Result (a, b, b, Seed, Int) Int)
           originalCounterExample' seed currentNumberOfChecks =
-            if currentNumberOfChecks >= numberOfChecks then
-              ------------------------------------------------------------------
-              -- Stopping Condition:
-              -- If we have checked the claim at least `numberOfChecks` times
-              -- Then we simple return `Ok` with the number of checks signifying
-              -- that we have failed to find a counter example.
-              ------------------------------------------------------------------
-              Done (Ok numberOfChecks)
-            else
-              let --------------------------------------------------------------
-                  -- Body of loop:
-                  -- 1. We generate a new random value and the next seed using
-                  --    the investigator's random generator and the previous seed.
-                  -- 2. We calculate the actual outcome and the expected
-                  --    outcome from the given `actualStatement` and
-                  --    `expectedStatement` respectively
-                  -- 3. We compare the actual and the expected
-                  -- 4. If actual equals expected, we continue the loop with
-                  --    the next seed and incrementing the current number of
-                  --    checks
-                  -- 5. Else, we have found our counter example.
-                  --------------------------------------------------------------
-                  ( value, nextSeed ) = Random.generate investigator.generator seed
-                  actual = actualStatement value
-                  expected = expectedStatement value
-              in  if actual == expected then
-                    Continue (\() -> originalCounterExample' nextSeed (currentNumberOfChecks + 1))
-                  else
-                    Done (Err ( value, actual, expected, nextSeed, currentNumberOfChecks + 1 ))
+            if currentNumberOfChecks >= numberOfChecks
+            then ------------------------------------------------------------------
+                 -- Stopping Condition:
+                 -- If we have checked the claim at least `numberOfChecks` times
+                 -- Then we simple return `Ok` with the number of checks signifying
+                 -- that we have failed to find a counter example.
+                 ------------------------------------------------------------------
+                 Done (Ok numberOfChecks)
+            else let --------------------------------------------------------------
+                     -- Body of loop:
+                     -- 1. We generate a new random value and the next seed using
+                     --    the investigator's random generator and the previous seed.
+                     -- 2. We calculate the actual outcome and the expected
+                     --    outcome from the given `actualStatement` and
+                     --    `expectedStatement` respectively
+                     -- 3. We compare the actual and the expected
+                     -- 4. If actual equals expected, we continue the loop with
+                     --    the next seed and incrementing the current number of
+                     --    checks
+                     -- 5. Else, we have found our counter example.
+                     --------------------------------------------------------------
+                     ( value, nextSeed ) = Random.generate investigator.generator seed
+                     actual = actualStatement value
+                     expected = expectedStatement value
+                 in  if actual == expected
+                     then Continue (\() -> originalCounterExample' nextSeed (currentNumberOfChecks + 1))
+                     else Done (Err ( value, actual, expected, nextSeed, currentNumberOfChecks + 1 ))
           -- originalCounterExample : Result (a, b, b, Seed, Int) Int
           originalCounterExample = trampoline (originalCounterExample' seed 0)
       in  case originalCounterExample of

@@ -347,7 +347,7 @@ checkGood 0.17 elm-lang/examples/time.elm
 checkGood 0.17 elm-lang/examples/websockets.elm
 checkGood 0.17 elm-lang/websocket/WebSocket.elm
 checkGood 0.17 elm-lang/examples/Spelling.elm # <------
-#
+
 #checkBad Empty.elm
 #checkBad UnexpectedComma.elm
 #checkBad UnexpectedEndOfInput.elm

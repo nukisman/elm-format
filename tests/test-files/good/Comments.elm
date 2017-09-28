@@ -63,16 +63,14 @@ comments4 bool =
         ()
 
 comments5 =
-  if True then
-    -- do the right thing
-    ()
-  else if False then
-    -- do something
-    -- redundant
-    ()
-  else
-    {- do the wrong thing -}
-    ()
+  if True
+  then -- do the right thing
+       ()
+  else if False
+  then -- do something
+       -- redundant
+       ()
+  else {- do the wrong thing -} ()
 
 comments6 =
   \x ->

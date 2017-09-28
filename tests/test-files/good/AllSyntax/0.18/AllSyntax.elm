@@ -121,10 +121,9 @@ tupleFunction = (,,,) 1 2 3 4
 
 multilineTuple a b =
   ( 1
-  , if b then
-      2
-    else
-      3
+  , if b
+    then 2
+    else 3
   , (+) 3 4
   , 7
       + 9
@@ -192,29 +191,25 @@ parenthesizedExpressions = 1 + (2 * 3) / 4 |> (+) 0
 
 multilineParenthesizedExpressions graphHeight range =
   graphHeight
-    / (if range == 0 then
-         0.1
-       else
-         toFloat range
+    / (if range == 0
+       then 0.1
+       else toFloat range
       )
     ==/==
-      (if range == 0 then
-         0.2
-       else
-         toFloat (range - 1)
+      (if range == 0
+       then 0.2
+       else toFloat (range - 1)
       )
     <<>>
-      (if range == 0 then
-         -1.0
-       else
-         0.0
+      (if range == 0
+       then -1.0
+       else 0.0
       )
 
 multilineParenthesizedExpressions2 range arg =
-  (if range == 0 then
-     always 0.1
-   else
-     toFloat range
+  (if range == 0
+   then always 0.1
+   else toFloat range
   )
     arg
 
@@ -263,12 +258,11 @@ multilineDeclarationInLet =
   in  string
 
 ifStatement b =
-  if b == "y" then
-    "YES"
-  else if b == "Y" then
-    "yes"
-  else
-    "No"
+  if b == "y"
+  then "YES"
+  else if b == "Y"
+  then "yes"
+  else "No"
 
 caseStatement mb =
   case mb of
@@ -282,12 +276,11 @@ caseStatement mb =
 multilineExpressionsInsideList =
   [ let x = 1
     in  always x
-  , if True then
-      always 2
-    else if False then
-      always 3
-    else
-      always 4
+  , if True
+    then always 2
+    else if False
+    then always 3
+    else always 4
   , case True of
       _
        -> always 5
@@ -309,12 +302,11 @@ multilineExpressionsInsideList =
 multilineExpressionsInsideTuple a foo =
   ( let x = 1
     in  x
-  , if True then
-      2
-    else if False then
-      3
-    else
-      4
+  , if True
+    then 2
+    else if False
+    then 3
+    else 4
   , case True of
       _
        -> 5
@@ -344,12 +336,11 @@ multilineExpressionsInsideRecord =
       let x = 1
       in  x
   , b =
-      if True then
-        2
-      else if False then
-        3
-      else
-        4
+      if True
+      then 2
+      else if False
+      then 3
+      else 4
   , c =
       case True of
         _
@@ -367,29 +358,21 @@ multilineExpressionsInsideRecord =
   }
 
 multilineIfCondition a b =
-  if
-    if a == Nothing then
-      True
-    else
-      False
-  then
-    "Yes"
-  else if
-    if b == Nothing then
-      True
-    else
-      False
-  then
-    "Perhaps"
-  else
-    "No"
+  if if a == Nothing
+     then True
+     else False
+  then "Yes"
+  else if if b == Nothing
+          then True
+          else False
+  then "Perhaps"
+  else "No"
 
 multilineCaseSubject a =
   case
-    if a == Nothing then
-      "X"
-    else
-      "Y"
+    if a == Nothing
+    then "X"
+    else "Y"
   of
     _
      -> ()
@@ -398,28 +381,24 @@ singleLineRange = [{ f1 = 6 }.f1..(9 + 6 |> (-) 2) + 2]
 
 multilineRange =
   [
-    if True then
-      1
-    else
-      2
+    if True
+    then 1
+    else 2
   ..
-    if False then
-      3
-    else
-      5
+    if False
+    then 3
+    else 5
   ]
 
 nestedMultilineRange =
   [ [
-      if True then
-        1
-      else
-        2
+      if True
+      then 1
+      else 2
     ..
-      if False then
-        3
-      else
-        5
+      if False
+      then 3
+      else 5
     ]
   , [4..2]
   ]
