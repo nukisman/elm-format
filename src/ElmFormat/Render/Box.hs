@@ -1027,6 +1027,22 @@ formatExpression elmVersion context aexpr =
 
         AST.Expression.If if' elseifs (elsComments, els) ->
             let
+--                opening key cond =
+--                    case (key, cond) of
+--                        (SingleLine key', SingleLine cond') ->
+--                            line $ row
+--                                [ key'
+--                                , space
+--                                , cond'
+--                                , space
+--                                ]
+--                        (SingleLine key', _) ->
+--                            prefix (row [key', space]) cond
+--                        _ ->
+--                            stack1
+--                                [ key
+--                                , cond |> indent
+--                                ]
                 opening key cond =
                     case (key, cond) of
                         (SingleLine key', SingleLine cond') ->
@@ -1035,45 +1051,84 @@ formatExpression elmVersion context aexpr =
                                 , space
                                 , cond'
                                 , space
-                                , keyword "then"
                                 ]
+                        (SingleLine key', _) ->
+                            prefix (row [key', space]) cond
                         _ ->
                             stack1
                                 [ key
                                 , cond |> indent
-                                , line $ keyword "then"
                                 ]
 
                 formatIf (cond, body) =
                     stack1
-                        [ opening (line $ keyword "if") $ formatCommented (formatExpression elmVersion SyntaxSeparated) cond
-                        , indent $ formatCommented_ True (formatExpression elmVersion SyntaxSeparated) body
+                        [ opening
+                            (line $ keyword "if")
+                            (formatCommented (formatExpression elmVersion SyntaxSeparated) cond)
+                        , prefix (row [keyword "then", space])
+                            $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) body
                         ]
 
                 formatElseIf (ifComments, (cond, body)) =
                   let
-                    key =
+                    ifCond =
                       case (formatHeadCommented id (ifComments, line $ keyword "if")) of
                         SingleLine key' ->
-                          line $ row [ keyword "else", space, key' ]
+                          opening
+                            (line $ row [ keyword "else", space, key' ])
+                            $ formatCommented (formatExpression elmVersion SyntaxSeparated) cond
+                        Stack l1 l2 [] ->
+                          opening
+                            (line $ keyword "else")
+                            $ stack1
+                                [ line l1 -- $ row [l1, keyword "!1"]
+                                , prefix
+                                    (row [l2, space])
+                                    $ formatCommented (formatExpression elmVersion SyntaxSeparated) cond
+                                ]
                         key' ->
-                          stack1
-                            [ line $ keyword "else"
-                            , key'
-                            ]
+                          opening
+                            (line $ row [keyword "else", space])
+                            $ stack1
+                                [ key'
+                                , formatCommented (formatExpression elmVersion SyntaxSeparated) cond
+                                ]
                   in
                     stack1
-                      [ opening key $ formatCommented (formatExpression elmVersion SyntaxSeparated) cond
-                      , indent $ formatCommented_ True (formatExpression elmVersion SyntaxSeparated) body
+                      [ ifCond
+                      , prefix
+                            (row [keyword "then", space])
+                            $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) body
                       ]
-            in
-                formatIf if'
+
+                (ifCond, ifThen) = if'
+                ifPart = formatCommented (formatExpression elmVersion SyntaxSeparated) ifCond
+                thenPart = formatCommented_ False (formatExpression elmVersion SyntaxSeparated) ifThen
+                elsePart = formatCommented_ False (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
+
+                multi =
+                    formatIf if'
                     |> andThen (map formatElseIf elseifs)
                     |> andThen
-                        [ line $ keyword "else"
-                        , indent $ formatCommented_ True (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
+                        [ prefix
+                            (row [keyword "else", space])
+                            $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
                         ]
                     |> expressionParens AmbiguousEnd context
+            in case ( ifPart, thenPart, elseifs, elsePart ) of
+                (SingleLine _if, SingleLine _then, [], SingleLine _else) ->
+                    let singleLine =
+                            row $ List.intersperse
+                                space
+                                [ keyword "if", _if, keyword "then", _then, keyword "else", _else]
+                        single =
+                            (line $ singleLine)
+                            |> expressionParens AmbiguousEnd context
+                    in  if (lineLength 0 singleLine) <= 36
+                        then single
+                        else multi
+                _ -> multi
+
 
         AST.Expression.Let defs bodyComments expr ->
             let
