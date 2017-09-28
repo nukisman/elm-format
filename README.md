@@ -12,6 +12,7 @@ See [https://github.com/nukisman/elm-format-short](https://github.com/nukisman/e
 * Without extra blank lines
 * Without extra line breaks
 * Without extra indents
+* With shorter and better visual representations of `case-of`, `if-then-else`, `let-in`, etc.
     
 `elm-format-short` formats [Elm](http://elm-lang.org) source code according to a standard set of rules in shorter way than `elm-format`.
 
