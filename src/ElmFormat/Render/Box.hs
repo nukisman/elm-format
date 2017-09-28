@@ -1100,34 +1100,14 @@ formatExpression elmVersion context aexpr =
                             (row [keyword "then", space])
                             $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) body
                       ]
-
-                (ifCond, ifThen) = if'
-                ifPart = formatCommented (formatExpression elmVersion SyntaxSeparated) ifCond
-                thenPart = formatCommented_ False (formatExpression elmVersion SyntaxSeparated) ifThen
-                elsePart = formatCommented_ False (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
-
-                multi =
-                    formatIf if'
-                    |> andThen (map formatElseIf elseifs)
-                    |> andThen
-                        [ prefix
-                            (row [keyword "else", space])
-                            $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
-                        ]
-                    |> expressionParens AmbiguousEnd context
-            in case ( ifPart, thenPart, elseifs, elsePart ) of
-                (SingleLine _if, SingleLine _then, [], SingleLine _else) ->
-                    let singleLine =
-                            row $ List.intersperse
-                                space
-                                [ keyword "if", _if, keyword "then", _then, keyword "else", _else]
-                        single =
-                            (line $ singleLine)
-                            |> expressionParens AmbiguousEnd context
-                    in  if (lineLength 0 singleLine) <= 36
-                        then single
-                        else multi
-                _ -> multi
+            in formatIf if'
+                   |> andThen (map formatElseIf elseifs)
+                   |> andThen
+                       [ prefix
+                           (row [keyword "else", space])
+                           $ formatCommented_ False (formatExpression elmVersion SyntaxSeparated) (Commented elsComments els [])
+                       ]
+                   |> expressionParens AmbiguousEnd context
 
 
         AST.Expression.Let defs bodyComments expr ->
