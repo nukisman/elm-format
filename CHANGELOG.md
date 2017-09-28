@@ -1,7 +1,7 @@
 ## 0.10.0
 
 Features:
-  - Multiline well structured short format for `If-then-else`
+  - Multiline well structured short format for `if-then-else`
 
 ## 0.9.0
 
