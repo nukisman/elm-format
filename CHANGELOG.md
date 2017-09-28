@@ -1,3 +1,8 @@
+## 0.10.0
+
+Features:
+  - Multiline well structured short format for long `If-then-else`
+
 ## 0.9.0
 
 Features:
