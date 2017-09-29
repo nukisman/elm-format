@@ -35,7 +35,11 @@ See `dreamwriter` app by `@rtfeldman`:
 
 `npm i -g elm-format-short`  
 
-## JetBrains Integration
+## IDE Integration
+
+`elm-format-short` is CLI-compatible with `elm-format`. IDE Integration almost same as for `elm-format`.
+
+### JetBrains Integration
 
 This is for WebStorm and other JetBrains IDEs.
 
