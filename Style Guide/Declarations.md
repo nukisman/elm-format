@@ -18,6 +18,5 @@ definition.
 -}
 infixr 5 ::?
 (::?) : Maybe a -> List a -> List a
-(::?) elem list =
-    list
+(::?) elem list = list
 ```

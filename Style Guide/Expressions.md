@@ -15,14 +15,13 @@ Parentheses are used around `if`, `case`, `let`, and lambda expressions:
 
 ```elm
 foo bool =
-    "A"
-        ++ (case bool of
-                True ->
-                    "true"
-
-                False ->
-                    "false"
-           )
+  "A"
+    ++ (case bool of
+          True
+           -> "true"
+          False
+           -> "false"
+       )
 ```
 
 However, you should prefer refactoring your code to using complex expressions
@@ -30,16 +29,13 @@ within binary operator expressions:
 
 ```elm
 foo bool =
-    let
-        truthString =
-            case bool of
-                True ->
-                    "true"
-
-                False ->
-                    "false"
-    in
-    "A" ++ truthString
+  let truthString =
+        case bool of
+          True
+           -> "true"
+          False
+           -> "false"
+  in  "A" ++ truthString
 ```
 
 
@@ -50,10 +46,9 @@ places at the end of the preceding line, and the following lines are indented:
 
 ```elm
 Ok <|
-    if b then
-        "YES"
-    else
-        "NO"
+  if b
+  then "YES"
+  else "NO"
 ```
 
 Parentheses are not used around the second term unless it is a binary operator expression:
@@ -64,8 +59,8 @@ Ok <| ([1,2,3] |> List.tail)  -- parens are required
 Ok <| ("a" ++ "b")  -- parens are used
 
 test "should pass" <|
-    \() ->
-        Expect.pass  -- parens are not used around the lambda
+  \() ->
+    Expect.pass  -- parens are not used around the lambda
 ```
 
 

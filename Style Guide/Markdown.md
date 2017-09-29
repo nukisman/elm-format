@@ -100,12 +100,12 @@ separate their items with blank lines.
 
 ## Code Blocks
 
-Code blocks containing valid Elm code are formatted with `elm-format`.
+Code blocks containing valid Elm code are formatted with `elm-format-short`.
 
 Valid elm code is one or more top-level declarations,
 possibly preceded by a module header.
 
-FUTURE: code blocks containing valid Elm expressions will be formatted with `elm-format.`
+FUTURE: code blocks containing valid Elm expressions will be formatted with `elm-format-short.`
 
 Code blocks with an info string of "elm" or with no info string
 are considered to be "Elm code blocks".
@@ -116,6 +116,10 @@ are considered to be "Elm code blocks".
 Example:
 
     main : Program Never Model Msg
+    main =
+      f
+        a
+        b
 ```
 
 Other code blocks use the fenced code block style:
@@ -137,5 +141,9 @@ would parse an indented code block here as a paragraph within the last list item
 
 ```
 main : Program Never Model Msg
+main =
+  f
+    a
+    b
 ```
 ````

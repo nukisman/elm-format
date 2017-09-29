@@ -31,14 +31,14 @@ The output will be a `List` of [FormattingErrors](#FormattingError).
 A FormattingError will be an object with the following fields:
 
   - **path**: `String`.  The path of the file that is not properly formatted.
-    This will be a relative path if the path(s) passed to `elm-format` were relative paths.
+    This will be a relative path if the path(s) passed to `elm-format-short` were relative paths.
   - **message**: `String`.  A message describing the error.
 
 
 ### Example JSON
 
 ```json
-[{"path":"./src/Fifo.elm","message":"File is not formatted with elm-format-short-0.7.2 --elm-version=0.18"}
-,{"path":"./tests/Tests.elm","message":"File is not formatted with elm-format-short-0.7.2 --elm-version=0.18"}
+[{"path":"./src/Fifo.elm","message":"File is not formatted with elm-format-short-0.10.0 --elm-version=0.18"}
+,{"path":"./tests/Tests.elm","message":"File is not formatted with elm-format-short-0.10.0 --elm-version=0.18"}
 ]
 ```
