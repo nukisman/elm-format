@@ -31,7 +31,7 @@ See `dreamwriter` app by `@rtfeldman`:
  - [RightSidebar.elm](https://github.com/nukisman/elm-format-short/blob/master/tests/test-files/good/rtfeldman/dreamwriter/RightSidebar.elm)
  - [WordGraph.elm](https://github.com/nukisman/elm-format-short/blob/master/tests/test-files/good/rtfeldman/dreamwriter/WordGraph.elm)  
 
-## Installation (currently Mac and Linux only) 
+## Installation
 
 `npm i -g elm-format-short`  
 

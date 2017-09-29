@@ -2,13 +2,13 @@
 
 set -ex
 
-VERSION="$(git describe --abbrev=8)"
+VERSION="$(git --git-dir=./.git describe --abbrev=8)"
 PLATFORM="win-i386"
 BINEXT=".exe"
 
 ## Run tests
 
-stack clean
+#stack clean
 #./tests/run-tests.sh # TODO !!!
 
 

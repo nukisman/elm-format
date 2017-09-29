@@ -1,3 +1,5 @@
+# Prepare
+
 ```bash
 brew tap caskroom/cask
 brew cask install vagrant
@@ -24,8 +26,29 @@ choco install poshgit
 #choco install tortoisegit
 ```
 
-# Restart shell
 
+# Build
+
+## Open VirtualBox and show the Windows VM
+
+## Unix
+
+```bash
+vagrant up
+vagrant provision
+vagrant plugin install vagrant-winrm
+```
+
+## Windows (Git-Bash)
+
+```bash
+cd /c/vagrant
+stack clean
+
+# Kill stack process. If need - restart windows
+
+./package/win/build-package.sh
+```
 
 ## Build Windows binary
 
@@ -38,6 +61,8 @@ git checkout <version tag>
 git clean -dfx
 ## !! Make sure you are in package/win/elm-format-short !!
 ```
+
+
 
 ## Start Git Bash
 
