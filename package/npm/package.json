@@ -14,8 +14,13 @@
   },
   "keywords": [
     "elm",
+    "elm-lang",
+    "elm language",
     "elm-format",
-    "elm-format-short"
+    "elm-format-short",
+    "format",
+    "formatter",
+    "source-code"
   ],
   "author": "Alexander Nuikin",
   "license": "BSD-3-Clause",
