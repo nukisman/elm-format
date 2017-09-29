@@ -21,7 +21,7 @@ Plus benefits in contrast to `elm-format`:
  - It makes code **easier to navigate**, because you have not to scroll needless empty space by mouse or arrows on keyboard.
  - It makes code **easier to write**, because it is **easier to read** and **easier to navigate**.
  - It makes code **easier to debug**, because your lines of code commented out for debug purposes are not surrounded by needless blank lines above and below.
- - It **saves your money** because you can still use your display. It not require you to buy new display with vertical resolution of 1000000000 pixels to see tons of blank lines.
+ - It **saves your money**, because you can still use your display. It not require you to buy new display with vertical resolution of 1000000000 pixels to see tons of blank lines.
 
 ## Example formatting
 
