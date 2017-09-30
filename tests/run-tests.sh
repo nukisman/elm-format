@@ -266,7 +266,7 @@ function checkValidationOutputFormat() {
 
 	INPUT="tests/test-files/tmp/_input.elm"
 	INPUT_2="tests/test-files/tmp/_input2.elm"
-	OUTPUT="_stdout.txt"
+	OUTPUT="tests/test-files/tmp/_stdout.txt"
 
 	echo
 	echo "------------------------------"

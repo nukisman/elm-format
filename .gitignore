@@ -1,7 +1,3 @@
-/formatted.elm
-/_input.elm
-/_input2.elm
-/_stdout.txt
 *.tix
 /.stack-work
 /tests/elm-format-short
