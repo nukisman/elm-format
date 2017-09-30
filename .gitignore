@@ -11,5 +11,4 @@ debug.elm
 dist
 elm-format-short-*.tgz
 .vagrant
-package-lock.json
 /tests/test-files/tmp
