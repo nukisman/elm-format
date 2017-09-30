@@ -26,22 +26,20 @@ choco install poshgit
 #choco install tortoisegit
 ```
 
+---
 
 # Build
 
 ## Open VirtualBox and show the Windows VM
 
 ## Unix
-
 ```bash
 vagrant up
-vagrant provision
-vagrant plugin install vagrant-winrm
 ```
 
 ## Windows (Git-Bash)
-
 ```bash
+ls /c/vagrant/  # With trailing '/'
 cd /c/vagrant
 stack clean
 
@@ -49,6 +47,15 @@ stack clean
 
 ./package/win/build-package.sh
 ```
+
+## Unix: Halt Vagrant
+```bash
+vagrant halt
+```
+
+---
+
+# Obsoleted
 
 ## Build Windows binary
 
@@ -61,8 +68,6 @@ git checkout <version tag>
 git clean -dfx
 ## !! Make sure you are in package/win/elm-format-short !!
 ```
-
-
 
 ## Start Git Bash
 
