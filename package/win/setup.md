@@ -45,7 +45,7 @@ stack clean
 
 # Kill stack process. If need - restart windows
 
-./package/win/build-package.sh
+time ./package/win/build-package.sh
 ```
 
 ## Unix: Halt Vagrant
