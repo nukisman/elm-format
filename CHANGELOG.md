@@ -1,3 +1,7 @@
+## 0.10.2
+
+Windows support
+
 ## 0.10.1
 
 Windows support
